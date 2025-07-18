@@ -1,4 +1,3 @@
-
 'use client';
 import { useEffect, useState, useRef } from 'react';
 
@@ -12,7 +11,6 @@ export default function SozlesmeOlusturPage() {
   const [selectedType, setSelectedType] = useState<string>('');
   const [formFields, setFormFields] = useState<Record<string, Field[]>>({});
   const [form, setForm] = useState<Record<string, string | number>>({});
-  const [contractText, setContractText] = useState<string>(''); // GPT'den gelen metin
   const [showPopup, setShowPopup] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -29,7 +27,6 @@ export default function SozlesmeOlusturPage() {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(e.target.value);
     setForm({});
-    setContractText('');
   };
 
   const handleInput = (
@@ -38,43 +35,14 @@ export default function SozlesmeOlusturPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch('/api/generate-contracts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: selectedType,
-          form: form,
-        }),
-      });
-
-      const data = await res.json();
-      if (data.contract) {
-        setContractText(data.contract);
-      } else {
-        alert('Sözleşme oluşturulamadı.');
-      }
-    } catch (error) {
-      console.error('Hata:', error);
-      alert('Sözleşme oluşturulurken bir hata oluştu.');
-    }
-  };
-
   return (
     <div className="min-h-screen w-full bg-[#fdf2f8]">
       <section className="relative flex flex-col justify-center items-center py-20 px-6 max-w-7xl mx-auto gap-12 min-h-[70vh] text-center">
-        {/* <div className="blurBox1"></div>
-        <div className="blurBox2"></div> */}
-
         <div className="w-full max-w-5xl mx-auto mt-10 p-10 bg-white rounded-2xl shadow-2xl border border-gray-200 z-10">
           <h1 className="text-4xl font-extrabold text-center text-[#fb7185] tracking-tight mb-10">
             Profesyonel Sözleşme Yazıcı
           </h1>
 
-          {/* Sözleşme oluşturma popup butonu */}
           {!showForm && (
             <button
               className="w-full rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md mb-10"
@@ -84,7 +52,6 @@ export default function SozlesmeOlusturPage() {
             </button>
           )}
 
-          {/* Popup */}
           {showPopup && (
             <div className="fixed inset-0 z-50 flex items-center justify-center">
               <div ref={popupRef} className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8 max-w-md w-full flex flex-col items-center animate-fadeIn">
@@ -128,7 +95,6 @@ export default function SozlesmeOlusturPage() {
             </div>
           )}
 
-          {/* Prompt ile (Form) kısmı */}
           {showForm && (
             <>
               <label className="block mb-4 text-gray-700 font-semibold text-sm uppercase tracking-wide text-left">
@@ -152,7 +118,7 @@ export default function SozlesmeOlusturPage() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                   onSubmit={(e) => {
                     e.preventDefault();
-                    alert('Sözleşme oluşturuldu!');
+                    alert('Form başarıyla gönderildi!');
                   }}
                 >
                   {formFields[selectedType]?.map((field) => (
@@ -177,7 +143,7 @@ export default function SozlesmeOlusturPage() {
                     <textarea
                       name="details"
                       rows={5}
-                      className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
+                      className="w-full text-black border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
                       placeholder="Sözleşme ile ilgili ekstra bilgi..."
                       value={form.details || ''}
                       onChange={handleInput}
@@ -203,17 +169,8 @@ export default function SozlesmeOlusturPage() {
               )}
             </>
           )}
-
-          {contractText && (
-            <div className="mt-10 text-left bg-gray-100 p-6 rounded-xl border border-gray-300 whitespace-pre-wrap">
-              <h2 className="text-xl font-bold text-[#fb7185] mb-4">
-                Oluşturulan Sözleşme
-              </h2>
-              <p>{contractText}</p>
-            </div>
-          )}
         </div>
       </section>
     </div>
   );
-} 
+}

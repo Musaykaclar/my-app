@@ -35,7 +35,7 @@ export default function StepsSection() {
   {/* İçerik için padding ver */}
   <div className="px-4">
     {/* Masaüstü için 2 üstte 2 altta grid, numaralar balon içinde */}
-    <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-6 max-w-6xl mx-auto">
+    <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-6 w-full px-4">
       {steps.map(({ title, description }, idx) => (
         <article
           key={idx}
@@ -68,7 +68,7 @@ export default function StepsSection() {
     </div>
 
     {/* Mobil için accordion */}
-    <div className="md:hidden max-w-xl mx-auto">
+    <div className="md:hidden w-full px-2">
       {steps.map(({ title, description }, idx) => (
         <div key={idx} className="mb-4 border rounded-lg overflow-hidden border-white">
           <button
