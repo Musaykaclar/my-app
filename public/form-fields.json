@@ -1,0 +1,144 @@
+{
+    "Kira Sözleşmesi": [
+        {"label": "Kiraya Veren Adı Soyadı", "name": "landlord"},
+        {"label": "Kiraya Veren TC Kimlik No", "name": "landlord_tc"},
+        {"label": "Kiraya Veren Adres", "name": "landlord_address"},
+        {"label": "Kiracı Adı Soyadı", "name": "tenant"},
+        {"label": "Kiracı TC Kimlik No", "name": "tenant_tc"},
+        {"label": "Kiracı Adres", "name": "tenant_address"},
+        {"label": "Taşınmaz Adresi", "name": "property_address"},
+        {"label": "Taşınmaz Türü", "name": "property_type"},
+        {"label": "Alan (m²)", "name": "property_area"},
+        {"label": "Diğer Özellikler", "name": "property_features"},
+        {"label": "Kira Bedeli (TL)", "name": "rent", "type": "number"},
+        {"label": "Kira Süresi", "name": "rent_duration"},
+        {"label": "Depozito (TL)", "name": "deposit", "type": "number"},
+        {"label": "Kira Artış Oranı (%)", "name": "increase_rate"}
+    ],
+    "İş Sözleşmesi": [
+        {"label": "İşveren Adı Soyadı/Unvanı", "name": "employer"},
+        {"label": "İşveren Adres", "name": "employer_address"},
+        {"label": "İşveren Telefon", "name": "employer_phone"},
+        {"label": "İşveren E-posta", "name": "employer_email"},
+        {"label": "İşçi Adı Soyadı", "name": "employee"},
+        {"label": "İşçi TC Kimlik No", "name": "employee_tc"},
+        {"label": "İşçi Adres", "name": "employee_address"},
+        {"label": "İşçi Telefon", "name": "employee_phone"},
+        {"label": "İşçi E-posta", "name": "employee_email"},
+        {"label": "Pozisyon", "name": "position"},
+        {"label": "Ücret (TL)", "name": "salary", "type": "number"},
+        {"label": "Başlangıç Tarihi", "name": "start_date", "type": "date"}
+    ],
+    "Hizmet Sözleşmesi": [
+        {"label": "Hizmet Veren Adı Soyadı/Unvanı", "name": "provider"},
+        {"label": "Hizmet Alan Adı Soyadı/Unvanı", "name": "client"},
+        {"label": "Hizmet Konusu", "name": "service"},
+        {"label": "Ücret (TL)", "name": "fee", "type": "number"},
+        {"label": "Sözleşme Süresi", "name": "duration"}
+    ],
+    "Satış Sözleşmesi": [
+        {"label": "Satıcı Adı Soyadı/Unvanı", "name": "seller"},
+        {"label": "Alıcı Adı Soyadı", "name": "buyer"},
+        {"label": "Malın Türü", "name": "product_type"},
+        {"label": "Marka/Model", "name": "product_model"},
+        {"label": "Miktar", "name": "product_amount"},
+        {"label": "Satış Bedeli (TL)", "name": "price", "type": "number"},
+        {"label": "Teslimat Adresi", "name": "delivery_address"},
+        {"label": "Teslimat Tarihi", "name": "delivery_date", "type": "date"}
+    ],
+    "Ortaklık Sözleşmesi": [
+        {"label": "Ortak 1 Adı Soyadı", "name": "partner1"},
+        {"label": "Ortak 2 Adı Soyadı", "name": "partner2"},
+        {"label": "Faaliyet Alanı", "name": "activity"},
+        {"label": "Ortak 1 Sermaye Katkısı", "name": "partner1_capital"},
+        {"label": "Ortak 2 Sermaye Katkısı", "name": "partner2_capital"}
+    ],
+    "Gizlilik Sözleşmesi": [
+        {"label": "Taraf 1", "name": "party1"},
+        {"label": "Taraf 2", "name": "party2"},
+        {"label": "Kapsam", "name": "scope"},
+        {"label": "Süre", "name": "duration"}
+    ],
+    "Bayilik Sözleşmesi": [
+        {"label": "Firma Adı", "name": "company"},
+        {"label": "Bayi Adı", "name": "dealer"},
+        {"label": "Bölge", "name": "region"},
+        {"label": "Başlangıç Tarihi", "name": "start_date", "type": "date"}
+    ],
+    "Franchise Sözleşmesi": [
+        {"label": "Franchise Veren", "name": "franchisor"},
+        {"label": "Franchise Alan", "name": "franchisee"},
+        {"label": "Marka", "name": "brand"},
+        {"label": "Sözleşme Süresi", "name": "duration"}
+    ],
+    "Vekalet Sözleşmesi": [
+        {"label": "Vekalet Veren", "name": "principal"},
+        {"label": "Vekil", "name": "attorney"},
+        {"label": "Yetki/Kapsam", "name": "authority"},
+        {"label": "Süre", "name": "duration"}
+    ],
+    "Danışmanlık Sözleşmesi": [
+        {"label": "Danışman", "name": "consultant"},
+        {"label": "Hizmet Konusu", "name": "service"},
+        {"label": "Ücret (TL)", "name": "fee", "type": "number"}
+    ],
+    "Taşeronluk Sözleşmesi": [
+        {"label": "Asıl İşveren", "name": "main_employer"},
+        {"label": "Taşeron", "name": "subcontractor"},
+        {"label": "Yapılacak İşler", "name": "work_details"},
+        {"label": "Başlangıç Tarihi", "name": "start_date", "type": "date"},
+        {"label": "Bitiş Tarihi", "name": "end_date", "type": "date"}
+    ],
+    "Teminat Sözleşmesi": [
+        {"label": "Borçlu", "name": "debtor"},
+        {"label": "Alacaklı", "name": "creditor"},
+        {"label": "Teminatın Konusu", "name": "guarantee_subject"},
+        {"label": "Teminat Tutarı (TL)", "name": "guarantee_amount", "type": "number"}
+    ],
+    "Kefalet Sözleşmesi": [
+        {"label": "Kefil", "name": "guarantor"},
+        {"label": "Borçlu", "name": "debtor"},
+        {"label": "Alacaklı", "name": "creditor"}
+    ],
+    "Lisans Sözleşmesi": [
+        {"label": "Lisans Veren", "name": "licensor"},
+        {"label": "Lisans Alan", "name": "licensee"},
+        {"label": "Lisans Konusu", "name": "license_subject"},
+        {"label": "Lisans Bedeli (TL)", "name": "license_fee", "type": "number"}
+    ],
+    "Tedarik Sözleşmesi": [
+        {"label": "Tedarikçi", "name": "supplier"},
+        {"label": "Alıcı", "name": "buyer"},
+        {"label": "Ürünler", "name": "products"},
+        {"label": "Toplam Bedel", "name": "total_price", "type": "number"}
+    ],
+    "Abonelik Sözleşmesi": [
+        {"label": "Hizmet Sağlayıcı", "name": "provider"},
+        {"label": "Abone", "name": "subscriber"},
+        {"label": "Abonelik Konusu", "name": "subscription_subject"},
+        {"label": "Ücret", "name": "subscription_fee", "type": "number"}
+    ],
+    "İşbirliği Sözleşmesi": [
+        {"label": "Birinci Taraf", "name": "party1"},
+        {"label": "İkinci Taraf", "name": "party2"},
+        {"label": "İşbirliği Alanı", "name": "collaboration_area"},
+        {"label": "Süre", "name": "duration"}
+    ],
+    "Evlilik Mal Rejimi Sözleşmesi": [
+        {"label": "Eş 1", "name": "spouse1"},
+        {"label": "Eş 2", "name": "spouse2"},
+        {"label": "Mal Rejimi Türü", "name": "regime_type"}
+    ],
+    "Feragat Sözleşmesi": [
+        {"label": "Feragat Eden", "name": "waiver_person"},
+        {"label": "Feragat Edilen", "name": "waived_person"},
+        {"label": "Haklar", "name": "waived_rights"}
+    ],
+    "Uzaktan Çalışma Sözleşmesi": [
+        {"label": "İşveren", "name": "employer"},
+        {"label": "Çalışan", "name": "employee"},
+        {"label": "Pozisyon", "name": "position"},
+        {"label": "Çalışma Saatleri", "name": "working_hours"},
+        {"label": "Ücret", "name": "salary", "type": "number"}
+    ]
+  }

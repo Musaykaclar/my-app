@@ -1,8 +1,9 @@
 "use client";
-import Navbar from '../components/Navbar';
+
 import FAQSection from '../components/FAQSections';
 import PopularContracts from '../components/PopularContracts';
 import StepsSections from '../components/StepsSections';
+import ParseTestButton from '../components/parseTestButton';
 import "./globals.css";
 
 export default function HomePage() {
@@ -89,6 +90,8 @@ export default function HomePage() {
           <StepsSections />
           <PopularContracts />
           <FAQSection />
+          
+          <ParseTestButton/>
         </section>
       </main>
     </>

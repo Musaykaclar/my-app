@@ -47,7 +47,7 @@ export default function FAQ() {
             onClick={() => toggle(i)}
           >
             <div className="flex justify-between items-center">
-              <h3 className="text-xl font-semibold">{item.question}</h3>
+              <h3 className="text-xl text-black font-semibold">{item.question}</h3>
               <span className="text-[#be123c] font-bold text-2xl select-none">{openIndex === i ? "−" : "+"}</span>
             </div>
             {openIndex === i && (
