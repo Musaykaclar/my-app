@@ -30,7 +30,7 @@ const Footer = () => {
                 loading="lazy"
                 width="150"
                 height="50"
-                src="/_next/static/media/iyzico_ile_ode_colored_horizontal.129fbb51.png"
+                src="/images/iyzico_ile_ode_colored_horizontal.129fbb51.png"
                 style={{ color: "transparent" }}
               />
               <img
@@ -38,11 +38,11 @@ const Footer = () => {
                 loading="lazy"
                 width="150"
                 height="50"
-                src="/_next/static/media/Visa-Mastercard.6ddfec02.webp"
+                src="/images/Visa-Mastercard.6ddfec02.webp"
                 style={{ color: "transparent" }}
               />
             </div>
-            <p className="mt-6 text-center text-sm text-slate-500 sm:mt-0 sm:text-left">
+            <p className="mt-6 text-center text-sm text-black-500 sm:mt-0 sm:text-left">
               Copyright © 2025{" "}
               <a href="http://demarkelabs.com" className="underline">
                 De Marke Labs
