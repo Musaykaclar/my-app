@@ -1,0 +1,16 @@
+{
+  "HomePage": {
+    "title": "Praktisch und Schnell",
+    "contract": "Vertrag",
+    "subtitle": "Sofort auswählen, einfach ausfüllen, jetzt herunterladen...",
+    "description": "Unsere KI-gestützte Plattform hilft Ihnen, offizielle Verträge innerhalb der Republik Türkei schnell zu erstellen.",
+    "buttonText": "Vertrag Erstellen",
+    "heroBox": {
+      "heading": "VERTRAG",
+      "article1": "ARTIKEL 1",
+      "article2": "ARTIKEL 2",
+      "by": "Von:",
+      "clickToSign": "Zum Signieren klicken..."
+    }
+  }
+}

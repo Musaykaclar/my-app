@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Pratik ve Hızlı ",
+    "contract": "Sözleşme",
+    "subtitle": "Hemen Seç, Kolayca Doldur, Anında İndir...",
+    "description": "Sözleşmelerinizi otomatik olarak oluşturan yapay zeka destekli platformumuz, Türkiye Cumhuriyeti sınırlarında resmi sözleşmelerinizi kolayca hazırlamanızı sağlar.",
+    "buttonText": "Sözleşme Oluştur",
+    "heroBox": {
+      "heading": "SÖZLEŞME",
+      "article1": "1. MADDE",
+      "article2": "2. MADDE",
+      "by": "Taraf:",
+      "clickToSign": "İmzalamak için tıklayın..."
+    }
+  },
+  "Navbar": {
+    "create": "Sözleşme Oluştur",
+    "myContracts": "Sözleşmelerim",
+    "faq": "SSS",
+    "popular": "Popüler Sözleşmeler"
+  }
+  
+}

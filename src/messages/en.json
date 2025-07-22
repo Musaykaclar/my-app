@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Practical and Fast ",
+    "contract": "Contract",
+    "subtitle": "Choose Instantly, Fill Easily, Download Now...",
+    "description": "Our AI-powered platform helps you quickly create official contracts within the Republic of Turkey.",
+    "buttonText": "Create Contract",
+    "heroBox": {
+      "heading": "CONTRACT",
+      "article1": "ARTICLE 1",
+      "article2": "ARTICLE 2",
+      "by": "By:",
+      "clickToSign": "Click to sign..."
+    }
+  },
+  "Navbar": {
+    "create": "Create Contract",
+    "myContracts": "My Contracts",
+    "faq": "FAQ",
+    "popular": "Popular Contracts"
+  }
+}
+  

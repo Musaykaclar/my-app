@@ -1,0 +1,16 @@
+{
+  "HomePage": {
+    "title": "Pratique et Rapide",
+    "contract": "Contrat",
+    "subtitle": "Choisissez instantanément, remplissez facilement, téléchargez maintenant...",
+    "description": "Notre plateforme alimentée par l'IA vous aide à créer rapidement des contrats officiels au sein de la République de Turquie.",
+    "buttonText": "Créer un Contrat",
+    "heroBox": {
+      "heading": "CONTRAT",
+      "article1": "ARTICLE 1",
+      "article2": "ARTICLE 2",
+      "by": "Par :",
+      "clickToSign": "Cliquez pour signer..."
+    }
+  }
+}
