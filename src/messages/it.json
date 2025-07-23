@@ -90,6 +90,28 @@
           "answer": "No, la nostra interfaccia user-friendly consente anche ai non avvocati di creare contratti facilmente. I contratti si basano su modelli standard preparati da esperti legali."
         }
       ]
-    }
+    },
+   "SozlesmeOlusturPage": {
+  "title": "Generatore di Contratti Professionale",
+  "button-name": "Crea Contratto",
+  "popup": {
+    "title": "Come Vorresti Creare un Contratto?",
+    "chatbot-button": "Con Chatbot",
+    "chatbot-alert": "Creazione contratto con chatbot in arrivo!",
+    "form-button": "Con Prompt (Modulo)",
+    "speech-button": "Con Speech to Text",
+    "speech-alert": "Creazione contratto con Speech to Text in arrivo!",
+    "close": "Chiudi"
+  },
+  "form": {
+    "contract-type-label": "Tipo di Contratto",
+    "select-contract-type": "Seleziona un tipo di contratto",
+    "additional-details": "Dettagli Aggiuntivi",
+    "details-placeholder": "Informazioni extra sul contratto...",
+    "success-message": "Modulo inviato con successo!",
+    "create-button": "CREA CONTRATTO",
+    "back-button": "Indietro"
+  }
+}
   
 }

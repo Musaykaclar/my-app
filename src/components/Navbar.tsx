@@ -33,7 +33,14 @@ export default function Navbar() {
         <nav className="w-full max-w-6xl mx-auto flex justify-between items-center bg-gray-100 rounded-full px-6 py-2 shadow-md relative" style={{ marginTop: 16 }}>
           <div className="text-xl font-bold drop-shadow-[3px_5px_2px_#be123c]">
             <Link href="/" className="hover:opacity-80 transition-opacity">
-              <Image src="/images/sozlesme-ai-logo.png" alt="SozlesmeAI Logo" className="h-16 w-auto" />
+            <Image
+            src="/images/sozlesme-ai-logo.png"
+            alt="SozlesmeAI Logo"
+            width={128}
+            height={64}
+            className="object-contain"
+            priority={true} // isteğe bağlı, logo hızlı yüklenir
+          />
             </Link>
           </div>
 

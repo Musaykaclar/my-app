@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import Link from 'next/link'
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -35,9 +36,15 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="max-w-5xl mx-auto my-20 px-4">
+     
+        
       <h2 className="text-3xl font-bold text-center text-black mb-8">
         {t("title")}
       </h2>
+      <p className="mt-4 text-lg tracking-tight text-slate-700">Eğer aradığınızı bulamıyorsanız bize mail atabilirsiniz. 
+        <br></br>
+        <Link className="underline hover:text-black" href="mailto:info@demarkelabs.com">info@demarkelabs.com</Link></p>
+        <br />
       <div className="space-y-6">
         {faqItems.map((item, i) => (
           <div

@@ -90,7 +90,31 @@
           "answer": "No, thanks to our user-friendly interface, even people without legal knowledge can easily prepare contracts. The contracts are prepared based on standard templates created by legal experts in the field. Your only task is to enter correct and complete information. If you're confused about legal terms, explanations and help notes within the platform will guide you. However, professional support may still be beneficial for complex legal situations."
         }
       ]
-    }
+    },
+   "SozlesmeOlusturPage": {
+  "title": "Professional Contract Generator",
+  "button-name": "Create Contract",
+  "popup": {
+    "title": "How Would You Like to Create a Contract?",
+    "chatbot-button": "With Chatbot",
+    "chatbot-alert": "Contract creation with chatbot coming soon!",
+    "form-button": "With Prompt (Form)",
+    "speech-button": "With Speech to Text",
+    "speech-alert": "Contract creation with Speech to Text coming soon!",
+    "close": "Close"
+  },
+  "form": {
+    "contract-type-label": "Contract Type",
+    "select-contract-type": "Select a contract type",
+    "additional-details": "Additional Details",
+    "details-placeholder": "Extra information about the contract...",
+    "success-message": "Form submitted successfully!",
+    "create-button": "CREATE CONTRACT",
+    "back-button": "Back"
+  }
+}
+           
+
   
 }
   

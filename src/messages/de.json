@@ -90,6 +90,27 @@
           "answer": "Nein, unsere benutzerfreundliche Oberfläche ermöglicht auch juristischen Laien die einfache Erstellung von Verträgen. Die Verträge basieren auf von Rechtsexperten erstellten Standardvorlagen. Bei Unklarheiten helfen Erläuterungen und Hilfetexte innerhalb der Plattform weiter."
         }
       ]
-    }
-  
+    },
+"SozlesmeOlusturPage": {
+  "title": "Professioneller Vertrags-Generator",
+  "button-name": "Vertrag Erstellen",
+  "popup": {
+    "title": "Wie möchten Sie einen Vertrag erstellen?",
+    "chatbot-button": "Mit Chatbot",
+    "chatbot-alert": "Vertragserstellung mit Chatbot kommt bald!",
+    "form-button": "Mit Eingabeaufforderung (Formular)",
+    "speech-button": "Mit Sprache-zu-Text",
+    "speech-alert": "Vertragserstellung mit Sprache-zu-Text kommt bald!",
+    "close": "Schließen"
+  },
+  "form": {
+    "contract-type-label": "Vertragsart",
+    "select-contract-type": "Wählen Sie einen Vertragstyp",
+    "additional-details": "Zusätzliche Details",
+    "details-placeholder": "Zusätzliche Informationen zum Vertrag...",
+    "success-message": "Formular erfolgreich gesendet!",
+    "create-button": "VERTRAG ERSTELLEN",
+    "back-button": "Zurück"
+  }
+}
 }
