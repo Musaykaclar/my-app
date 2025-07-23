@@ -12,5 +12,84 @@
       "by": "Von:",
       "clickToSign": "Zum Signieren klicken..."
     }
-  }
+  },
+  "Navbar": {
+    "create": "Vertrag Erstellen",
+    "myContracts": "Meine Verträge",
+    "faq": "Häufig gestellte Fragen",
+    "popular": "Beliebte Verträge"
+  },
+  "PopularContracts": {
+    "title": "Beliebte Verträge",
+    "contracts": {
+      "rental": "Mietvertrag",
+      "employment": "Arbeitsvertrag",
+      "service": "Dienstvertrag",
+      "sales": "Verkaufsvertrag",
+      "partnership": "Partnerschaftsvertrag", 
+      "nda": "Vertraulichkeitsvertrag",
+      "dealership": "Vertriebsvertrag",
+      "franchise": "Franchisevertrag",
+      "proxy": "Powers of Attorney",
+      "consultancy": "Beratungsvertrag",
+      "subcontractor": "Subunternehmervertrag",
+      "guarantee": "Garantievertrag",
+      "surety": "Pfandvertrag",
+      "license": "Lizenzvertrag",
+      "supply": "Liefervertrag",
+      "subscription": "Abonnementvertrag",
+      "collaboration": "Kooperationsvertrag",
+      "marriage": "Ehevertrag",
+      "waiver": "Rücktrittsvertrag",
+      "remote": "Fernarbeitvertrag"
+    }
+  },
+  "Steps": {
+    "title": "Wie funktioniert es?",
+    "steps": {
+      "0": {
+        "title": "Parteiinformationen eingeben",
+        "description": "Geben Sie die Namen, Adressen und Kontaktdaten aller beteiligten Parteien vollständig ein."
+      },
+      "1": {
+        "title": "Vertragstyp wählen",
+        "description": "Wählen Sie den Vertragstyp, der Ihrem Bedarf entspricht, um die richtige Vorlage zu erstellen."
+      },
+      "2": {
+        "title": "Bedingungen und Klauseln festlegen",
+        "description": "Geben Sie die Rechte, Pflichten, Zahlungsbedingungen und weitere Details des Vertrags ein."
+      },
+      "3": {
+        "title": "Erstellen & Überprüfen",
+        "description": "Senden Sie das Formular ab, und die KI erstellt automatisch Ihren Vertrag. Überprüfen Sie das Ergebnis sorgfältig."
+      }
+    }
+  },
+  
+    "FAQ": {
+      "title": "Häufig gestellte Fragen",
+      "questions": [
+        {
+          "question": "Wie funktioniert der Vertragserstellungsprozess?",
+          "answer": "Um einen Vertrag zu erstellen, müssen Sie zunächst den gewünschten Vertragstyp auswählen. Unser System zeigt Ihnen dann dynamisch generierte Formularfelder an, die Sie ausfüllen müssen. Nachdem alle Informationen eingegeben wurden, generiert das System automatisch ein rechtskonformes, standardisiertes Vertragsdokument. Sie können den erstellten Vertrag überprüfen, bei Bedarf Änderungen vornehmen und die endgültige Version im PDF-Format herunterladen."
+        },
+        {
+          "question": "Sind die Verträge rechtlich bindend?",
+          "answer": "Die auf unserer Plattform erstellten Verträge entsprechen der türkischen Gesetzgebung und enthalten allgemein anerkannte rechtliche Standards. Dennoch empfehlen wir insbesondere für kritische und großangelegte Rechtsgeschäfte die Konsultation eines Rechtsberaters. Unsere Plattform bietet Standardverträge für den allgemeinen Gebrauch, jedoch keine persönliche Rechtsberatung."
+        },
+        {
+          "question": "Wie werden meine Daten und Verträge geschützt?",
+          "answer": "Datenschutz und Sicherheit haben für uns höchste Priorität. Alle persönlichen Daten und erstellten Verträge werden mit branchenüblichen Sicherheitsprotokollen geschützt. Die Datenübertragung erfolgt über SSL-gesicherte Verbindungen, und die Speicherung auf unseren Servern ist verschlüsselt. Daten werden niemals an Dritte weitergegeben."
+        },
+        {
+          "question": "Kann ich meine Verträge jederzeit aktualisieren?",
+          "answer": "Ja, Sie können Ihre Verträge jederzeit einsehen und aktualisieren. Bei Änderungsbedarf können Sie den entsprechenden Vertrag öffnen, die Formularfelder bearbeiten und eine aktualisierte Version erstellen. Diese Funktion ermöglicht eine schnelle Anpassung an geänderte Vertragsbedingungen."
+        },
+        {
+          "question": "Benötige ich juristische Kenntnisse zur Nutzung der Plattform?",
+          "answer": "Nein, unsere benutzerfreundliche Oberfläche ermöglicht auch juristischen Laien die einfache Erstellung von Verträgen. Die Verträge basieren auf von Rechtsexperten erstellten Standardvorlagen. Bei Unklarheiten helfen Erläuterungen und Hilfetexte innerhalb der Plattform weiter."
+        }
+      ]
+    }
+  
 }

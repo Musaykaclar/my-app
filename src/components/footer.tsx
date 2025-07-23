@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link";
+import Image from 'next/image';
 const Footer = () => {
     return (
       <footer className="w-full bg-[#fb7185]  px-6">
@@ -25,7 +26,7 @@ const Footer = () => {
   
           <div className="flex flex-col items-center justify-start">
             <div className="mt-5 flex items-center justify-between gap-5 sm:mt-0 sm:gap-x-20">
-              <img
+              <Image
                 alt="iyzico"
                 loading="lazy"
                 width="150"
@@ -33,7 +34,7 @@ const Footer = () => {
                 src="/images/iyzico_ile_ode_colored_horizontal.129fbb51.png"
                 style={{ color: "transparent" }}
               />
-              <img
+              <Image
                 alt="master-card-visa"
                 loading="lazy"
                 width="150"
@@ -44,9 +45,9 @@ const Footer = () => {
             </div>
             <p className="mt-6 text-center text-sm text-black-500 sm:mt-0 sm:text-left">
               Copyright © 2025{" "}
-              <a href="http://demarkelabs.com" className="underline">
+              <Link href="http://demarkelabs.com" className="underline">
                 De Marke Labs
-              </a>
+              </Link>
               , Inc. All rights reserved.
             </p>
           </div>

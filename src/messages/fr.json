@@ -12,5 +12,84 @@
       "by": "Par :",
       "clickToSign": "Cliquez pour signer..."
     }
-  }
+  },
+  "Navbar": {
+    "create": "Créer un Contrat",
+    "myContracts": "Mes Contrats",
+    "faq": "Questions fréquemment posées",
+    "popular": "Contrats populaires"
+  },
+  "PopularContracts": {
+    "title": "Contrats Populaires",
+    "contracts": {
+      "rental": "Contrat de Location",
+      "employment": "Contrat de Travail",
+      "service": "Contrat de Service",
+      "sales": "Contrat de Vente",
+      "partnership": "Contrat de Société",
+      "nda": "Contrat de Confidentialité",
+      "dealership": "Contrat de Distribution",
+      "franchise": "Contrat de Franchise",
+      "proxy": "Contrat de Poursuite",
+      "consultancy": "Contrat de Consultance",
+      "subcontractor": "Contrat de Sous-traitance",
+      "guarantee": "Contrat de Garantie",
+      "surety": "Contrat de Fiducie",
+      "license": "Contrat de Licence",
+      "supply": "Contrat de Fourniture",
+      "subscription": "Contrat de Souscription",
+      "collaboration": "Contrat de Collaboration",
+      "marriage": "Contrat de Régime Matrimonial",
+      "waiver": "Contrat de Renonciation",
+      "remote": "Contrat de Travail à Distance"
+    }
+  },
+  "Steps": {
+    "title": "Comment ça marche ?",
+    "steps": {
+      "0": {
+        "title": "Entrez les informations des parties",
+        "description": "Renseignez les noms, adresses et coordonnées de toutes les parties concernées."
+      },
+      "1": {
+        "title": "Choisissez le type de contrat",
+        "description": "Sélectionnez le type de contrat adapté à votre besoin pour générer le bon modèle."
+      },
+      "2": {
+        "title": "Définissez les termes et clauses",
+        "description": "Indiquez les droits, obligations, modalités de paiement et autres détails du contrat."
+      },
+      "3": {
+        "title": "Générez et examinez",
+        "description": "Soumettez le formulaire et l'IA générera automatiquement votre contrat. Vérifiez soigneusement le résultat."
+      }
+    }
+  },
+  
+    "FAQ": {
+      "title": "Questions fréquemment posées",
+      "questions": [
+        {
+          "question": "Comment fonctionne le processus de création de contrat ?",
+          "answer": "Pour créer un contrat, sélectionnez d'abord le type de contrat dont vous avez besoin. Notre système affiche ensuite dynamiquement des champs de formulaire à remplir. Une fois toutes les informations saisies, le système génère automatiquement un document contractuel conforme à la législation. Vous pouvez le vérifier, apporter des modifications si nécessaire et télécharger la version finale au format PDF."
+        },
+        {
+          "question": "Les contrats sont-ils juridiquement contraignants ?",
+          "answer": "Les contrats préparés sur notre plateforme sont conformes à la législation turque et respectent les standards juridiques. Cependant, nous recommandons fortement de consulter un expert juridique pour les transactions importantes. Notre plateforme fournit des contrats standards, pas des conseils juridiques personnalisés."
+        },
+        {
+          "question": "Comment mes données et contrats sont-ils protégés ?",
+          "answer": "La confidentialité et la sécurité des données sont nos priorités absolues. Toutes vos données sont protégées par des protocoles de sécurité standard et stockées de manière cryptée sur nos serveurs. Les transferts de données utilisent des connexions SSL sécurisées."
+        },
+        {
+          "question": "Puis-je mettre à jour mes contrats à tout moment ?",
+          "answer": "Oui, vous pouvez consulter et modifier vos contrats à tout moment sur notre plateforme. Vous pouvez créer de nouvelles versions mises à jour lorsque des changements sont nécessaires."
+        },
+        {
+          "question": "Ai-je besoin de connaissances juridiques pour utiliser la plateforme ?",
+          "answer": "Non, notre interface conviviale permet même aux non-juristes de créer facilement des contrats. Des explications et des notes d'aide sont disponibles pour vous guider."
+        }
+      ]
+    }
+  
 }

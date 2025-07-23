@@ -5,16 +5,20 @@ import { useParams, useRouter } from "next/navigation";
 import { FaArrowLeft, FaDownload } from "react-icons/fa";
 
 export default function ContractDetailPage() {
-  const { slug } = useParams();
+  const params = useParams();
+  const slug = typeof params.slug === "string" ? params.slug : Array.isArray(params.slug) ? params.slug[0] : undefined;
+
   const router = useRouter();
   const [contractText, setContractText] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!slug) return;
+
     const fetchContract = async () => {
       try {
-        const res = await fetch("http://localhost:1337/parse/functions/getContractText" ,{
+        const res = await fetch("http://localhost:1337/parse/functions/getContractText", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -31,8 +35,12 @@ export default function ContractDetailPage() {
 
         const data = await res.json();
         setContractText(data.result);
-      } catch (err: any) {
-        setError(err.message || "Bir hata oluştu");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Bilinmeyen bir hata oluştu");
+        }
       } finally {
         setLoading(false);
       }
@@ -42,7 +50,8 @@ export default function ContractDetailPage() {
   }, [slug]);
 
   const downloadPDF = () => {
-    if (!contractText) return;
+    if (!contractText || !slug) return;
+
     const blob = new Blob([contractText], { type: "application/pdf" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
@@ -65,14 +74,14 @@ export default function ContractDetailPage() {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#fb7185]"></div>
           </div>
         )}
-        
+
         {error && <p className="text-red-600 text-center p-4 bg-red-50 rounded-lg">{error}</p>}
 
-        {contractText && (
+        {contractText && slug && (
           <div className="bg-white rounded-xl shadow-md overflow-hidden">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-6 border-b border-gray-100">
               <h1 className="text-2xl font-bold text-gray-800 capitalize">
-                {slug.toString().replace(/-/g, " ")}
+                {slug.replace(/-/g, " ")}
               </h1>
               <button
                 onClick={downloadPDF}

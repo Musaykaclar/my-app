@@ -18,6 +18,79 @@
     "myContracts": "My Contracts",
     "faq": "FAQ",
     "popular": "Popular Contracts"
-  }
+  },
+  "PopularContracts": {
+    "title": "Popular Contracts",
+    "contracts": {
+      "rental": "Rental Contract",
+      "employment": "Employment Contract",
+      "service": "Service Contract",
+      "sales": "Sales Contract",
+      "partnership": "Partnership Contract",
+      "nda": "NDA Contract",
+      "dealership": "Dealer Contract",
+      "franchise": "Franchise Contract",
+      "proxy": "Proxy Contract",
+      "consultancy": "Consultancy Contract",
+      "subcontractor": "Subcontractor Contract",
+      "guarantee": "Guarantee Contract",
+      "surety": "Surety Contract",
+      "license": "License Contract",
+      "supply": "Supply Contract",
+      "subscription": "Subscription Contract",
+      "collaboration": "Collaboration Contract",
+      "marriage": "Marriage Contract",
+      "waiver": "Waiver Contract",
+      "remote": "Remote Work Contract"
+    }
+  },
+  "Steps": {
+    "title": "How It Works?",
+    "steps": {
+      "0": {
+        "title": "Enter Party Information",
+        "description": "Fill in the names, addresses, and contact information of all parties involved."
+      },
+      "1": {
+        "title": "Choose Contract Type",
+        "description": "Select the contract type that fits your need to generate the correct template."
+      },
+      "2": {
+        "title": "Set Terms and Clauses",
+        "description": "Enter the rights, obligations, payment terms, and other details of the contract."
+      },
+      "3": {
+        "title": "Generate & Review",
+        "description": "Submit the form and AI will automatically generate your contract. Carefully review the result."
+      }
+    }
+  },
+  
+    "FAQ": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "How does the contract creation process work?",
+          "answer": "To create a contract, you first need to select the type of contract you require. Our system then dynamically presents you with form fields to fill out. You need to complete these fields accurately and completely. Once all information is entered, the system automatically generates a legally compliant, standard contract document. You can review the generated contract, make any necessary edits, and download the final version in PDF format. This allows you to have a professional contract without dealing with complex legal procedures."
+        },
+        {
+          "question": "Are the contracts legally binding?",
+          "answer": "Contracts prepared on our platform are created in compliance with the legislation of the Republic of Turkey and include generally accepted legal standards. However, each contract may vary depending on specific conditions, parties' circumstances, and intended use. Therefore, it is strongly recommended to consult a legal expert, especially for critical and large-scale legal transactions. Our platform provides standard contracts for general use and does not offer personalized legal consultation services."
+        },
+        {
+          "question": "How is my data and contracts protected?",
+          "answer": "User privacy and data security are among our top priorities. All your personal data and created contracts are protected with industry-standard security protocols. Your data is transferred over SSL-certified connections and stored encrypted on our servers. Additionally, we absolutely do not share data with third parties. Regular system updates and audits are performed on our platform to ensure your security."
+        },
+        {
+          "question": "Can I update my contracts anytime?",
+          "answer": "Yes, you can view and update your contracts on our platform anytime you want. When you need to make changes to a contract, you can open the relevant contract, edit the form fields, and then create an updated new version. This feature allows you to quickly and easily adapt to changes in contract parties or conditions. Thus, you always have up-to-date and valid contracts."
+        },
+        {
+          "question": "Do I need special legal knowledge to use the platform?",
+          "answer": "No, thanks to our user-friendly interface, even people without legal knowledge can easily prepare contracts. The contracts are prepared based on standard templates created by legal experts in the field. Your only task is to enter correct and complete information. If you're confused about legal terms, explanations and help notes within the platform will guide you. However, professional support may still be beneficial for complex legal situations."
+        }
+      ]
+    }
+  
 }
   

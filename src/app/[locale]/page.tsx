@@ -1,6 +1,6 @@
 "use client";
 import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/navigation';
+import Link from 'next/link';
 import FAQSection from '../../components/FAQSections';
 import PopularContracts from '../../components/PopularContracts';
 import StepsSections from '../../components/StepsSections';
@@ -36,12 +36,12 @@ export default function HomePage() {
               {t('description')}
             </p>
             <div className="text-center">
-              <a
+              <Link
                 href="/sozlesme-olustur"
                 className="inline-block rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-8 py-4 text-lg font-bold text-white tracking-wide shadow-md"
               >
                {t('buttonText')}
-              </a>
+              </Link>
             </div>
           </div>
 

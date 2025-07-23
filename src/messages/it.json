@@ -12,5 +12,84 @@
       "by": "Da:",
       "clickToSign": "Clicca per firmare..."
     }
-  }
+  },
+  "Navbar": {
+    "create": "Crea Contratto",
+    "myContracts": "I miei contratti",
+    "faq": "Domande frequenti",
+    "popular": "Contratti popolari"
+  },
+  "PopularContracts": {
+    "title": "Contratti Popolari",
+    "contracts": {
+      "rental": "Contratto di Locazione",
+      "employment": "Contratto di Lavoro",
+      "service": "Contratto di Servizio",
+      "sales": "Contratto di Vendita",
+      "partnership": "Contratto di Società",
+      "nda": "Contratto di Confidenzialità",
+      "dealership": "Contratto di Distribuzione",
+      "franchise": "Contratto di Franchising",
+      "proxy": "Contratto di Poder",
+      "consultancy": "Contratto di Consulenza",
+      "subcontractor": "Contratto di Sottrazione",
+      "guarantee": "Contratto di Garanzia",
+      "surety": "Contratto di Fiducia",
+      "license": "Contratto di Licenza",
+      "supply": "Contratto di Fornitura",
+      "subscription": "Contratto di Sottoscrizione",
+      "collaboration": "Contratto di Collaborazione",
+      "marriage": "Contratto di Regime Matrimoniale",
+      "waiver": "Contratto di Renuncia",
+      "remote": "Contratto di Lavoro Remoto"
+    }
+  },
+  "Steps": {
+    "title": "Come Funziona?",
+    "steps": {
+      "0": {
+        "title": "Inserisci le Informazioni delle Parti",
+        "description": "Compila i nomi, indirizzi e recapiti di tutte le parti coinvolte."
+      },
+      "1": {
+        "title": "Scegli il Tipo di Contratto",
+        "description": "Seleziona il tipo di contratto adatto alle tue esigenze per generare il modello corretto."
+      },
+      "2": {
+        "title": "Definisci Termini e Clausole",
+        "description": "Inserisci diritti, obblighi, termini di pagamento e altri dettagli del contratto."
+      },
+      "3": {
+        "title": "Genera e Rivedi",
+        "description": "Invia il modulo e l'IA genererà automaticamente il tuo contratto. Rivedi attentamente il risultato."
+      }
+    }
+  },
+  
+    "FAQ": {
+      "title": "Domande frequenti",
+      "questions": [
+        {
+          "question": "Come funziona il processo di creazione del contratto?",
+          "answer": "Per creare un contratto, seleziona prima il tipo di contratto di cui hai bisogno. Il nostro sistema mostra dinamicamente i campi del modulo da compilare. Dopo aver inserito tutte le informazioni, il sistema genera automaticamente un documento contrattuale conforme alle norme legali. Puoi rivedere il contratto, apportare modifiche se necessario e scaricare la versione finale in formato PDF."
+        },
+        {
+          "question": "I contratti sono legalmente vincolanti?",
+          "answer": "I contratti preparati sulla nostra piattaforma sono creati in conformità con la legislazione turca e contengono standard legali accettati. Tuttavia, per transazioni importanti consigliamo di consultare un esperto legale. La nostra piattaforma fornisce contratti standard, non consulenza legale personalizzata."
+        },
+        {
+          "question": "Come sono protetti i miei dati e contratti?",
+          "answer": "La privacy e la sicurezza dei dati sono la nostra priorità. Tutti i dati personali e i contratti sono protetti con protocolli di sicurezza standard del settore. I dati vengono trasferiti tramite connessioni SSL sicure e archiviati crittografati sui nostri server."
+        },
+        {
+          "question": "Posso aggiornare i miei contratti in qualsiasi momento?",
+          "answer": "Sì, puoi visualizzare e aggiornare i tuoi contratti sulla nostra piattaforma in qualsiasi momento. Quando hai bisogno di modifiche, puoi modificare i campi del modulo e creare una versione aggiornata del contratto."
+        },
+        {
+          "question": "Ho bisogno di conoscenze legali per usare la piattaforma?",
+          "answer": "No, la nostra interfaccia user-friendly consente anche ai non avvocati di creare contratti facilmente. I contratti si basano su modelli standard preparati da esperti legali."
+        }
+      ]
+    }
+  
 }

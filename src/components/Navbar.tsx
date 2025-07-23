@@ -1,11 +1,31 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation"; // next-intl link kullanımı
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const t = useTranslations("Navbar");
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const changeLocale = (locale: string) => {
+    router.replace(pathname, { locale });
+  };
+
+  const locales = [
+    { code: "tr", label: "Türkçe" },
+    { code: "en", label: "English" },
+    { code: "de", label: "Deutsch" },
+    { code: "pt", label: "Português" },
+    { code: "ru", label: "Русский" },
+    { code: "fr", label: "Français" },
+    { code: "it", label: "Italiano" },
+    { code: "es", label: "Español" }
+  ];
 
   return (
     <header className="w-full bg-[#fb7185]">
@@ -13,7 +33,7 @@ export default function Navbar() {
         <nav className="w-full max-w-6xl mx-auto flex justify-between items-center bg-gray-100 rounded-full px-6 py-2 shadow-md relative" style={{ marginTop: 16 }}>
           <div className="text-xl font-bold drop-shadow-[3px_5px_2px_#be123c]">
             <Link href="/" className="hover:opacity-80 transition-opacity">
-              <img src="/images/sozlesme-ai-logo.png" alt="SozlesmeAI Logo" className="h-16 w-auto" />
+              <Image src="/images/sozlesme-ai-logo.png" alt="SozlesmeAI Logo" className="h-16 w-auto" />
             </Link>
           </div>
 
@@ -21,9 +41,37 @@ export default function Navbar() {
           <ul className="hidden md:flex gap-6 font-semibold text-gray-700">
             <li><Link href="/sozlesme-olustur" className="hover:text-[#be123c]">{t("create")}</Link></li>
             <li><Link href="/sozlesme" className="hover:text-[#be123c]">{t("myContracts")}</Link></li>
-            <li><a href="#faq" className="hover:text-[#be123c] cursor-pointer">{t("faq")}</a></li>
-            <li><a href="#popular-contracts" className="hover:text-[#be123c] cursor-pointer">{t("popular")}</a></li>
+            <li><Link href="#faq" className="hover:text-[#be123c] cursor-pointer">{t("faq")}</Link></li>
+            <li><Link href="#popular-contracts" className="hover:text-[#be123c] cursor-pointer">{t("popular")}</Link></li>
           </ul>
+
+          {/* Dropdown Dil Menüsü */}
+          <div className="hidden md:block relative ml-4">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="text-sm font-semibold hover:text-[#be123c] px-4 py-2 border border-gray-300 rounded-md bg-white shadow-sm"
+            >
+              🌐 Dil Seç
+            </button>
+
+            {langOpen && (
+              <ul className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md z-50">
+                {locales.map(({ code, label }) => (
+                  <li key={code}>
+                    <button
+                      onClick={() => {
+                        changeLocale(code);
+                        setLangOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-[#fda4af]"
+                    >
+                      {label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
           {/* Mobile Hamburger */}
           <button
@@ -53,8 +101,8 @@ export default function Navbar() {
         <ul className="md:hidden bg-gray-100 rounded-b-md shadow-md px-5 py-2 space-y-3 font-semibold text-gray-700">
           <li><Link href="/sozlesme-olustur" onClick={() => setMenuOpen(false)}>{t("create")}</Link></li>
           <li><Link href="/sozlesme" onClick={() => setMenuOpen(false)}>{t("myContracts")}</Link></li>
-          <li><a href="#faq" onClick={() => setMenuOpen(false)} className="cursor-pointer">{t("faq")}</a></li>
-          <li><a href="#popular-contracts" onClick={() => setMenuOpen(false)} className="cursor-pointer">{t("popular")}</a></li>
+          <li><Link href="#faq" onClick={() => setMenuOpen(false)} className="cursor-pointer">{t("faq")}</Link></li>
+          <li><Link href="#popular-contracts" onClick={() => setMenuOpen(false)} className="cursor-pointer">{t("popular")}</Link></li>
         </ul>
       )}
     </header>

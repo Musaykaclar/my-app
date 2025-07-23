@@ -12,5 +12,84 @@
       "by": "Por:",
       "clickToSign": "Haz clic para firmar..."
     }
-  }
+  },
+  "Navbar": {
+    "create": "Crear Contrato",
+    "myContracts": "Mis Contratos",
+    "faq": "Preguntas Frecuentes",
+    "popular": "Contratos Populares"
+  },
+  "PopularContracts": {
+    "title": "Contratos Populares",
+    "contracts": {
+      "rental": "Contrato de Alquiler",
+      "employment": "Contrato de Empleo",
+      "service": "Contrato de Servicio",
+      "sales": "Contrato de Venta",
+      "partnership": "Contrato de Sociedad",
+      "nda": "Contrato de Confidencialidad",
+      "dealership": "Contrato de Distribución",
+      "franchise": "Contrato de Franquicia",
+      "proxy": "Contrato de Poder",
+      "consultancy": "Contrato de Consultoría",
+      "subcontractor": "Contrato de Subcontratación",
+      "guarantee": "Contrato de Garantía",
+      "surety": "Contrato de Fianza",
+      "license": "Contrato de Licencia",
+      "supply": "Contrato de Suministro",
+      "subscription": "Contrato de Suscripción",
+      "collaboration": "Contrato de Colaboración",
+      "marriage": "Acuerdo de Régimen Matrimonial",
+      "waiver": "Acuerdo de Renuncia",
+      "remote": "Contrato de Trabajo Remoto"
+    }
+  },
+  "Steps": {
+    "title": "¿Cómo Funciona?",
+    "steps": {
+      "0": {
+        "title": "Ingresa Información de las Partes",
+        "description": "Completa los nombres, direcciones e información de contacto de todas las partes involucradas."
+      },
+      "1": {
+        "title": "Selecciona el Tipo de Contrato",
+        "description": "Elige el tipo de contrato que se ajuste a tu necesidad para generar la plantilla correcta."
+      },
+      "2": {
+        "title": "Establece Términos y Cláusulas",
+        "description": "Ingresa los derechos, obligaciones, condiciones de pago y otros detalles del contrato."
+      },
+      "3": {
+        "title": "Generar y Revisar",
+        "description": "Envía el formulario y la IA generará automáticamente tu contrato. Revisa cuidadosamente el resultado."
+      }
+    }
+  },
+  
+    "FAQ": {
+      "title": "Preguntas frecuentes",
+      "questions": [
+        {
+          "question": "¿Cómo funciona el proceso de creación de contratos?",
+          "answer": "Para crear un contrato, primero seleccione el tipo de contrato que necesita. Nuestro sistema le mostrará campos de formulario dinámicos para completar. Una vez ingresada toda la información, el sistema genera automáticamente un documento contractual legalmente compatible. Puede revisar el contrato, realizar modificaciones si es necesario y descargar la versión final en formato PDF."
+        },
+        {
+          "question": "¿Los contratos son legalmente vinculantes?",
+          "answer": "Los contratos preparados en nuestra plataforma cumplen con la legislación turca y contienen estándares legales aceptados. Sin embargo, recomendamos consultar a un experto legal para transacciones importantes. Ofrecemos contratos estándar, no asesoramiento legal personalizado."
+        },
+        {
+          "question": "¿Cómo se protegen mis datos y contratos?",
+          "answer": "La privacidad y seguridad de los datos son nuestra máxima prioridad. Todos los datos personales y contratos están protegidos con protocolos de seguridad estándar. Los datos se transfieren mediante conexiones SSL seguras y se almacenan cifrados en nuestros servidores."
+        },
+        {
+          "question": "¿Puedo actualizar mis contratos en cualquier momento?",
+          "answer": "Sí, puede ver y actualizar sus contratos en nuestra plataforma en cualquier momento. Cuando necesite cambios, puede editar los campos del formulario y crear una versión actualizada del contrato."
+        },
+        {
+          "question": "¿Necesito conocimientos legales para usar la plataforma?",
+          "answer": "No, nuestra interfaz fácil de usar permite incluso a no abogados crear contratos fácilmente. Los contratos se basan en plantillas estándar preparadas por expertos legales."
+        }
+      ]
+    }
+  
 }
