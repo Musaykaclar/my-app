@@ -35,7 +35,7 @@ export default function PopularContracts() {
   const router = useRouter();
 
   return (
-    <section className="py-12 bg-white">
+    <section id="popular-contracts" className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           {t("title")}

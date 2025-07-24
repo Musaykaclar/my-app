@@ -62,12 +62,12 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="#faq" className="hover:text-[#be123c] cursor-pointer">
+              <Link href="/#faq" className="hover:text-[#be123c] cursor-pointer">
                 {t('faq')}
               </Link>
             </li>
             <li>
-              <Link href="#popular-contracts" className="hover:text-[#be123c] cursor-pointer">
+              <Link href="/#popular-contracts" className="hover:text-[#be123c] cursor-pointer">
                 {t('popular')}
               </Link>
             </li>
@@ -137,12 +137,12 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="#faq" onClick={() => setMenuOpen(false)} className="cursor-pointer">
+            <Link href="/#faq" onClick={() => setMenuOpen(false)} className="cursor-pointer">
               {t('faq')}
             </Link>
           </li>
           <li>
-            <Link href="#popular-contracts" onClick={() => setMenuOpen(false)} className="cursor-pointer">
+            <Link href="/#popular-contracts" onClick={() => setMenuOpen(false)} className="cursor-pointer">
               {t('popular')}
             </Link>
           </li>
