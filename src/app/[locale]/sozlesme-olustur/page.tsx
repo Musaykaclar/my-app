@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations } from "next-intl";
+import { useRouter } from 'next/navigation'; // ✅ yönlendirme için
+import ChatPage from '@/app/[locale]/chat/page';
 
 interface Field {
   label: string;
@@ -16,6 +18,7 @@ export default function SozlesmeOlusturPage() {
   const [showForm, setShowForm] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("SozlesmeOlusturPage");
+  const router = useRouter(); // ✅ yönlendirme için
 
   useEffect(() => {
     const fetchFields = async () => {
@@ -59,18 +62,25 @@ export default function SozlesmeOlusturPage() {
               <div ref={popupRef} className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8 max-w-md w-full flex flex-col items-center animate-fadeIn">
                 <h2 className="text-2xl font-bold text-[#fb7185] mb-6">{t('popup.title')}</h2>
                 <div className="flex flex-col gap-4 w-full">
+                  
+                  {/* ✅ Chatbot butonu yönlendirmeli */}
                   <button
                     className="w-full rounded-md bg-[#fbbf24] hover:bg-[#f59e42] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
-                    onClick={() => { setShowPopup(false); alert(t('popup.chatbot-alert')); }}
+                    onClick={() => {
+                      setShowPopup(false);
+                      router.push('/chat');
+                    }}
                   >
                     🤖 {t('popup.chatbot-button')}
                   </button>
+
                   <button
                     className="w-full rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
                     onClick={() => { setShowPopup(false); setShowForm(true); }}
                   >
                     📝 {t('popup.form-button')}
                   </button>
+
                   <button
                     className="w-full rounded-md bg-[#38bdf8] hover:bg-[#0ea5e9] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
                     onClick={() => { setShowPopup(false); alert(t('popup.speech-alert')); }}

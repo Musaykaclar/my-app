@@ -68,6 +68,7 @@
   
     "FAQ": {
       "title": "Questions fréquemment posées",
+      "ask": "Si vous ne trouvez pas ce que vous cherchez, vous pouvez nous envoyer un e-mail.",
       "questions": [
         {
           "question": "Comment fonctionne le processus de création de contrat ?",

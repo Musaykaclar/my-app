@@ -41,7 +41,7 @@ export default function FAQ() {
       <h2 className="text-3xl font-bold text-center text-black mb-8">
         {t("title")}
       </h2>
-      <p className="mt-4 text-lg tracking-tight text-slate-700">Eğer aradığınızı bulamıyorsanız bize mail atabilirsiniz. 
+      <p className="mt-4 text-lg tracking-tight text-slate-700">{t('ask')} 
         <br></br>
         <Link className="underline hover:text-black" href="mailto:info@demarkelabs.com">info@demarkelabs.com</Link></p>
         <br />

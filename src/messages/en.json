@@ -68,6 +68,7 @@
   
     "FAQ": {
       "title": "Frequently Asked Questions",
+      "ask":"If you can't find what you're looking for, you can send us an e-mail.",
       "questions": [
         {
           "question": "How does the contract creation process work?",

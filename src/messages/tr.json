@@ -67,6 +67,7 @@
   },
   "FAQ": {
     "title": "Sıkça Sorulan Sorular",
+    "ask":"Eğer aradığınızı bulamıyorsanız bize mail atabilirsiniz.",
     "questions": [
       {
         "question": "Sözleşme oluşturma süreci nasıl işliyor?",
@@ -89,6 +90,7 @@
         "answer": "Hayır, platformumuz kullanıcı dostu arayüzü sayesinde hukuk bilgisi olmayan kişilerin bile kolayca sözleşme hazırlamasına olanak tanır. Hazırlanan sözleşmeler, alanında uzman hukukçular tarafından oluşturulan standart şablonlar baz alınarak hazırlanır. Size düşen tek görev, doğru ve eksiksiz bilgileri girmektir. Eğer hukuki terimler hakkında kafanız karışırsa, platform içerisindeki açıklamalar ve yardım notları size rehberlik eder. Ancak, karmaşık hukuki durumlarda yine de profesyonel destek almanız faydalı olacaktır."
       }
     ]
+    
   },
   "SozlesmeOlusturPage": {
   "title": "Profesyonel Sözleşme Yazıcı",
