@@ -1,8 +1,15 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { useTranslations } from "next-intl";
-import { useRouter } from 'next/navigation'; // ✅ yönlendirme için
-import ChatPage from '@/app/[locale]/chat/page';
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from 'next/navigation';
+import Parse from 'parse';
+
+// Parse initialize
+Parse.initialize(
+  process.env.NEXT_PUBLIC_PARSE_APP_ID || 'YOUR_APP_ID', 
+  process.env.NEXT_PUBLIC_PARSE_JS_KEY || 'YOUR_JS_KEY'
+);
+Parse.serverURL = process.env.NEXT_PUBLIC_PARSE_SERVER_URL || 'http://localhost:1337/parse';
 
 interface Field {
   label: string;
@@ -10,24 +17,85 @@ interface Field {
   type?: string;
 }
 
+interface ContractField {
+  name: string;
+  label: Record<string, string>;
+  type?: string;
+}
+
+interface ContractTemplate {
+  id: string;
+  name: string;
+  label: Record<string, string>;
+  fields: ContractField[];
+}
+
 export default function SozlesmeOlusturPage() {
   const [selectedType, setSelectedType] = useState<string>('');
   const [formFields, setFormFields] = useState<Record<string, Field[]>>({});
+  const [contractTemplates, setContractTemplates] = useState<ContractTemplate[]>([]);
   const [form, setForm] = useState<Record<string, string | number>>({});
   const [showPopup, setShowPopup] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("SozlesmeOlusturPage");
-  const router = useRouter(); // ✅ yönlendirme için
+  const router = useRouter();
+  const locale = useLocale();
 
   useEffect(() => {
+    if (!showForm) return;
+
     const fetchFields = async () => {
-      const res = await fetch('/form-fields.json');
-      const data = await res.json();
-      setFormFields(data);
+      setIsLoading(true);
+      try {
+        const query = new Parse.Query("ContractTemplate");
+        const results = await query.find();
+
+        const templates: ContractTemplate[] = results.map(template => {
+          const id = template.id;
+          if (!id) throw new Error("Template id is missing");
+
+          const name = template.get("name");
+          const label = template.get("label");
+          const fields = template.get("fields");
+
+          // Tip güvenliği için küçük kontrol
+          if (!Array.isArray(fields)) {
+            throw new Error("Fields should be an array");
+          }
+
+          return {
+            id,
+            name,
+            label,
+            fields
+          };
+        });
+
+        setContractTemplates(templates);
+
+        const localizedFields: Record<string, Field[]> = {};
+
+        templates.forEach(template => {
+          localizedFields[template.name] = template.fields.map(field => ({
+            name: field.name,
+            label: field.label[locale] || field.label['en'] || field.name,
+            type: field.type || 'text'
+          }));
+        });
+
+        setFormFields(localizedFields);
+
+      } catch (error) {
+        console.error('Veri çekme hatası:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
     fetchFields();
-  }, []);
+  }, [showForm, locale]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(e.target.value);
@@ -37,7 +105,9 @@ export default function SozlesmeOlusturPage() {
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const value = e.target.type === 'number' ?
+      Number(e.target.value) : e.target.value;
+    setForm({ ...form, [e.target.name]: value });
   };
 
   return (
@@ -62,8 +132,6 @@ export default function SozlesmeOlusturPage() {
               <div ref={popupRef} className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8 max-w-md w-full flex flex-col items-center animate-fadeIn">
                 <h2 className="text-2xl font-bold text-[#fb7185] mb-6">{t('popup.title')}</h2>
                 <div className="flex flex-col gap-4 w-full">
-                  
-                  {/* ✅ Chatbot butonu yönlendirmeli */}
                   <button
                     className="w-full rounded-md bg-[#fbbf24] hover:bg-[#f59e42] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
                     onClick={() => {
@@ -95,15 +163,6 @@ export default function SozlesmeOlusturPage() {
                   {t('popup.close')}
                 </button>
               </div>
-              <style jsx>{`
-                .animate-fadeIn {
-                  animation: fadeIn 0.2s ease;
-                }
-                @keyframes fadeIn {
-                  from { opacity: 0; transform: scale(0.95); }
-                  to { opacity: 1; transform: scale(1); }
-                }
-              `}</style>
             </div>
           )}
 
@@ -112,72 +171,80 @@ export default function SozlesmeOlusturPage() {
               <label className="block mb-4 text-gray-700 font-semibold text-sm uppercase tracking-wide text-left">
                 {t('form.contract-type-label')}
               </label>
-              <select
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-10 focus:outline-none focus:ring-2 focus:ring-[#fb7185] text-black bg-white"
-                value={selectedType}
-                onChange={handleChange}
-              >
-                <option value="">{t('form.select-contract-type')}</option>
-                {Object.keys(formFields).map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
+              
+              {isLoading ? (
+                <div className="text-center py-4">Yükleniyor...</div>
+              ) : (
+                <>
+                  <select
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-10 focus:outline-none focus:ring-2 focus:ring-[#fb7185] text-black bg-white"
+                    value={selectedType}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                  >
+                    <option value="">{t('form.select-contract-type')}</option>
+                    {contractTemplates.map((template) => (
+                      <option key={template.id} value={template.name}>
+                        {template.label[locale] || template.label['en'] || template.name}
+                      </option>
+                    ))}
+                  </select>
 
-              {selectedType && (
-                <form
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert(t('form.success-message'));
-                  }}
-                >
-                  {formFields[selectedType]?.map((field) => (
-                    <div key={field.name} className="text-left">
-                      <label className="block text-sm font-semibold text-gray-600 mb-2">
-                        {field.label}
-                      </label>
-                      <input
-                        type={field.type || 'text'}
-                        name={field.name}
-                        value={form[field.name] || ''}
-                        onChange={handleInput}
-                        className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
-                      />
-                    </div>
-                  ))}
-
-                  <div className="col-span-full text-left">
-                    <label className="block text-sm font-semibold text-gray-600 mb-2">
-                      {t('form.additional-details')}
-                    </label>
-                    <textarea
-                      name="details"
-                      rows={5}
-                      className="w-full text-black border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
-                      placeholder={t('form.details-placeholder')}
-                      value={form.details || ''}
-                      onChange={handleInput}
-                    />
-                  </div>
-
-                  <div className="col-span-full flex gap-4">
-                    <button
-                      type="submit"
-                      className="mt-4 w-full rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md"
+                  {selectedType && (
+                    <form
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        alert(t('form.success-message'));
+                      }}
                     >
-                      {t('form.create-button')}
-                    </button>
-                    <button
-                      type="button"
-                      className="mt-4 w-full rounded-md bg-gray-200 hover:bg-gray-300 transition-colors duration-200 px-6 py-4 text-base font-bold text-gray-700 tracking-wide shadow-md"
-                      onClick={() => setShowForm(false)}
-                    >
-                      {t('form.back-button')}
-                    </button>
-                  </div>
-                </form>
+                      {formFields[selectedType]?.map((field) => (
+                        <div key={field.name} className="text-left">
+                          <label className="block text-sm font-semibold text-gray-600 mb-2">
+                            {field.label}
+                          </label>
+                          <input
+                            type={field.type || 'text'}
+                            name={field.name}
+                            value={form[field.name]?.toString() || ''}
+                            onChange={handleInput}
+                            className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
+                          />
+                        </div>
+                      ))}
+
+                      <div className="col-span-full text-left">
+                        <label className="block text-sm font-semibold text-gray-600 mb-2">
+                          {t('form.additional-details')}
+                        </label>
+                        <textarea
+                          name="details"
+                          rows={5}
+                          className="w-full text-black border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#fb7185] shadow-sm"
+                          placeholder={t('form.details-placeholder')}
+                          value={form.details || ''}
+                          onChange={handleInput}
+                        />
+                      </div>
+
+                      <div className="col-span-full flex gap-4">
+                        <button
+                          type="submit"
+                          className="mt-4 w-full rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-6 py-4 text-base font-bold text-white tracking-wide shadow-md"
+                        >
+                          {t('form.create-button')}
+                        </button>
+                        <button
+                          type="button"
+                          className="mt-4 w-full rounded-md bg-gray-200 hover:bg-gray-300 transition-colors duration-200 px-6 py-4 text-base font-bold text-gray-700 tracking-wide shadow-md"
+                          onClick={() => setShowForm(false)}
+                        >
+                          {t('form.back-button')}
+                        </button>
+                      </div>
+                    </form>
+                  )}
+                </>
               )}
             </>
           )}

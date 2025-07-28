@@ -11,7 +11,7 @@ export default function HomePage() {
   const t = useTranslations('HomePage');
   return (
     <>
-      <main className="min-h-screen bg-[#fdf2f8] px-4">
+      <main className="min-h-screen bg-[#fdf2f8] px-4 overflow-x-hidden">
         {/* Hero bölümü */}
         <section className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 py-16 mx-auto">
           {/* Sol sütun: Metin ve buton */}
@@ -47,7 +47,10 @@ export default function HomePage() {
 
           <div className="flex-1 flex justify-center items-center relative w-full max-w-md">
   {/* Yeni efekt arka planlar */}
-  <div className="absolute rotate-[135deg] z-10 rounded-[44px] w-[359.21px] h-[343.29px] top-[110px] -right-5 bg-gradient-to-br from-[#59d5ff] via-[#8dfce8] to-[#b1fcb4]" />
+  <div className="absolute rotate-[135deg] z-10 rounded-[44px] 
+  w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[359px] md:h-[343px] 
+  top-[110px] right-0 bg-gradient-to-br from-[#59d5ff] via-[#8dfce8] to-[#b1fcb4]" />
+
   <div className="absolute rotate-[135deg] z-10 rounded-[24px] w-[126.65px] h-[121.04px] top-[225px] -left-4 blur-[12px] bg-gradient-to-br from-[#59d5ff] via-[#8dfce8] to-[#b1fcb4]" />
 
   {/* DÜZENLENMİŞ efekt - site rengine uygun ve daha yukarı */}
