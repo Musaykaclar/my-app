@@ -1,4 +1,6 @@
 'use client';
+
+import { ensureAnonymousUser } from "@/utils/parse/ensureAnonymousUser";
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from 'next/navigation';
@@ -60,7 +62,6 @@ export default function SozlesmeOlusturPage() {
           const label = template.get("label");
           const fields = template.get("fields");
 
-          // Tip güvenliği için küçük kontrol
           if (!Array.isArray(fields)) {
             throw new Error("Fields should be an array");
           }
@@ -105,9 +106,14 @@ export default function SozlesmeOlusturPage() {
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const value = e.target.type === 'number' ?
-      Number(e.target.value) : e.target.value;
+    const value = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
     setForm({ ...form, [e.target.name]: value });
+  };
+
+  // Buton clicklerinde anonim login kontrolü için yardımcı fonksiyon
+  const handleAnonymousAndAction = async (action: () => void | Promise<void>) => {
+    await ensureAnonymousUser();
+    action();
   };
 
   return (
@@ -134,7 +140,8 @@ export default function SozlesmeOlusturPage() {
                 <div className="flex flex-col gap-4 w-full">
                   <button
                     className="w-full rounded-md bg-[#fbbf24] hover:bg-[#f59e42] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
-                    onClick={() => {
+                    onClick={async () => {
+                      await ensureAnonymousUser();
                       setShowPopup(false);
                       router.push('/chat');
                     }}
@@ -144,14 +151,22 @@ export default function SozlesmeOlusturPage() {
 
                   <button
                     className="w-full rounded-md bg-[#fb7185] hover:bg-[#f43f5e] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
-                    onClick={() => { setShowPopup(false); setShowForm(true); }}
+                    onClick={async () => {
+                      await ensureAnonymousUser();
+                      setShowPopup(false);
+                      setShowForm(true);
+                    }}
                   >
                     📝 {t('popup.form-button')}
                   </button>
 
                   <button
                     className="w-full rounded-md bg-[#38bdf8] hover:bg-[#0ea5e9] transition-colors duration-200 px-6 py-3 text-base font-bold text-white tracking-wide shadow-md"
-                    onClick={() => { setShowPopup(false); alert(t('popup.speech-alert')); }}
+                    onClick={async () => {
+                      await ensureAnonymousUser();
+                      setShowPopup(false);
+                      alert(t('popup.speech-alert'));
+                    }}
                   >
                     🎤 {t('popup.speech-button')}
                   </button>

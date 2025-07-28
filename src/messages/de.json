@@ -113,5 +113,10 @@
     "create-button": "VERTRAG ERSTELLEN",
     "back-button": "Zurück"
   }
-}
+},
+
+"Chatbot":{
+  "chatbot-title":"Vertragsassistent",
+  "chatbot-message":"Geben Sie Ihre Nachricht ein..."
+  }
 }

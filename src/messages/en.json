@@ -113,9 +113,11 @@
     "create-button": "CREATE CONTRACT",
     "back-button": "Back"
   }
+},
+"Chatbot":{
+"chatbot-title":"Contract Assistant",
+"chatbot-message":"Enter your message..."
 }
-           
-
-  
+    
 }
   

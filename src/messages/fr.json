@@ -113,6 +113,10 @@
     "create-button": "CRÉER UN CONTRAT",
     "back-button": "Retour"
   }
+},
+"Chatbot":{
+"chatbot-title":"Assistant Contrat",
+"chatbot-message":"Saisissez votre message..."
 }
   
 }

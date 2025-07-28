@@ -113,5 +113,9 @@
     "create-button": "SÖZLEŞME OLUŞTUR",
     "back-button": "Geri"
   }
+},
+"Chatbot":{
+  "chatbot-title":"Sözleşme Asistanı",
+  "chatbot-message":"Mesajınızı yazınız..."
 }
 }

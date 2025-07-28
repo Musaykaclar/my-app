@@ -113,6 +113,10 @@
     "create-button": "CREA CONTRATTO",
     "back-button": "Indietro"
   }
+},
+"Chatbot": {
+"chatbot-title":"Assistente Contrattuale",
+"chatbot-message":"Inserisci il tuo messaggio..."
 }
   
 }

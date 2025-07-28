@@ -113,5 +113,9 @@
     "create-button": "СОЗДАТЬ ДОГОВОР",
     "back-button": "Назад"
   }
+},
+"Chatbot":{
+"chatbot-title":"Помощник по контрактам",
+"chatbot-message":"Введите ваше сообщение..."
 }
 }
