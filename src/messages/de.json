@@ -118,5 +118,50 @@
 "Chatbot":{
   "chatbot-title":"Vertragsassistent",
   "chatbot-message":"Geben Sie Ihre Nachricht ein..."
+  },
+  "About": {
+    "about-title": "Über Uns",
+    "about-description": "dewjrkdnclmsfkejndmc"
+  },
+  "ConfidentialityAgreement": {
+    "conf-agreement-title": "Vertraulichkeitsvereinbarung",
+    "conf-agreement-description": "derfgtyhujıkolıkj"
+  },
+  "Communication": {
+    "communication-title": "Kontakt",
+    "communication-description": "Kontaktieren Sie uns bei Fragen, Anregungen oder Supportanfragen.",
+    "eposta": "E-Mail:"
+  },
+  "DeliveryAndReturn": {
+    "dar-title": "Liefer- und Rückgabebedingungen",
+    "item1": "Digitale Produkte stehen sofort nach Zahlungseingang zur Verfügung.",
+    "item2": "Digitale Produkte werden automatisch an Ihre E-Mail-Adresse oder Ihr Benutzerkonto geliefert.",
+    "item3": "Für personalisierte digitale Produkte besteht gemäß Verbraucherschutzgesetz kein Widerrufsrecht.",
+    "item4": "Rückgaben werden nur bei technischen Problemen während der Leistungserbringung berücksichtigt.",
+    "item5": "Für technischen Support können Sie uns rund um die Uhr kontaktieren."
+  },
+  "DistanceContract": {
+    "title": "Fernabsatzvertrag",
+    "section1Title": "1. Parteien",
+    "section1Content": "Dieser Vertrag wird elektronisch zwischen De Marke Labs Teknoloji ve Yazılım Limited Şirketi (im Folgenden „Verkäufer“) und [Name und Nachname oder Firmenname des Kunden] (im Folgenden „Käufer“) unter den folgenden Bedingungen abgeschlossen.",
+    "section2Title": "2. Vertragsgegenstand",
+    "section2Content": "Gegenstand dieses Vertrags sind der Verkauf und die Lieferung der vom Käufer auf der Website dilekcearzuhal.com bestellten Produkte gemäß dem Gesetz Nr. 6502 über den Verbraucherschutz und der Fernabsatzverordnung, einschließlich der Rechte und Pflichten der Parteien.",
+    "section3Title": "3. Produktinformationen",
+    "section3Content": "Art, Typ, Menge, Marke, Modell, Farbe und Verkaufspreis des Produkts/der Produkte entsprechen genau den Angaben im Bestellformular zum Zeitpunkt der Bestellung.",
+    "section4Title": "4. Produktlieferung und -bedingungen",
+    "section4Content1": "4.1. Digitale Produkte werden dem Käufer unmittelbar nach Abschluss der Zahlung elektronisch geliefert.",
+    "section4Content2": "4.2. Die Lieferung erfolgt an die im Bestellvorgang angegebene E-Mail-Adresse oder das Benutzerkonto.",
+    "section4Content3": "4.3. Da es sich um digitale Produkte handelt, entfällt eine physische Lieferung und es entstehen keine Versandkosten.",
+    "section5Title": "5. Widerrufsrecht und Rückgabe",
+    "section5Content1": "5.1. Für digitale Produkte besteht nach §15 des Gesetzes Nr. 6502 kein Widerrufsrecht nach der Lieferung.",
+    "section5Content2": "5.2. Bei technischen Problemen kann der Käufer den Verkäufer kontaktieren, um eine Lösung zu verlangen.",
+    "section6Title": "6. Pflichten des Verkäufers",
+    "section6Content1": "6.1. Der Verkäufer ist für die Lieferung gemäß den im Vertrag angegebenen Bedingungen verantwortlich.",
+    "section6Content2": "6.2. Der Verkäufer verpflichtet sich, im Falle technischer Probleme die notwendige Unterstützung zu leisten.",
+    "section7Title": "7. Streitbeilegung",
+    "section7Content": "Bei Streitigkeiten streben die Parteien zunächst eine einvernehmliche Lösung an. Kann keine Einigung erzielt werden, sind die Verbraucherschlichtungsstellen und Gerichte am Wohnsitz des Käufers zuständig.",
+    "section8Title": "8. Inkrafttreten",
+    "section8Content": "Dieser Vertrag tritt mit Abschluss der Bestellung und Zahlung durch den Käufer elektronisch in Kraft.",
+    "footer": "Parteien\nVerkäufer: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nKäufer: [Name und Nachname oder Firmenname des Käufers]\nDatum: [Datum]\nElektronische Zustimmung: [Zustimmung des Käufers]"
   }
 }

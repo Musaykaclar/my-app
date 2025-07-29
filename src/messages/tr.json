@@ -117,5 +117,53 @@
 "Chatbot":{
   "chatbot-title":"Sözleşme Asistanı",
   "chatbot-message":"Mesajınızı yazınız..."
-}
+},
+"About":{
+  "about-title":"Hakkımızda",
+  "about-description":"dewjrkdnclmsfkejndmc"
+},
+"ConfidentialityAgreement":{
+  "conf-agreement-title":"Gizlilik Sözleşmesi",
+  "conf-agreement-description":"derfgtyhujıkolıkj"
+},
+"Communication":{
+  "communication-title":"İletişim",
+  "communication-description":"Her türlü soru, öneri veya destek talebiniz için bizimle iletişime geçebilirsiniz.",
+  "eposta":"E-Posta:"
+},
+
+
+  "DeliveryAndReturn": {
+    "dar-title": "Teslimat ve İade Şartları",
+    "item1": " Satın alınan dijital ürünler, ödeme onayının ardından anında kullanıma sunulur.",
+    "item2": " Dijital ürünler e-posta adresinize veya kullanıcı hesabınıza otomatik olarak teslim edilir.",
+    "item3": " Kişiye özel dijital ürünlerde, tüketici hakları gereği cayma hakkı bulunmamaktadır.",
+    "item4": " İade talepleri yalnızca hizmet alımında teknik bir sorun oluşması durumunda değerlendirilecektir.",
+    "item5": " Teknik destek talepleriniz için bizimle 7/24 iletişime geçebilirsiniz."
+  },
+  "DistanceContract": {
+    "title": "Mesafeli Satış Sözleşmesi",
+    "section1Title": "1. Taraflar",
+    "section1Content": "Bu sözleşme, bir tarafta De Marke Labs Teknoloji ve Yazılım Limited Şirketi (bundan böyle \"Satıcı\" olarak anılacaktır) ile diğer tarafta [Müşteri Adı ve Soyadı veya Unvanı] (bundan böyle \"Alıcı\" olarak anılacaktır) arasında, aşağıda belirtilen şartlar dahilinde elektronik ortamda kurulmuştur.",
+    "section2Title": "2. Konu",
+    "section2Content": "İşbu sözleşmenin konusu, Alıcı’nın Satıcı’ya ait dilekcearzuhal.com internet sitesinden elektronik ortamda siparişini verdiği ürünlerin satışı ve teslimi ile ilgili 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri gereğince tarafların hak ve yükümlülüklerinin belirlenmesidir.",
+    "section3Title": "3. Ürün Bilgileri",
+    "section3Content": "Satışa konu ürünün/ürünlerin cinsi, türü, miktarı, markası, modeli, rengi ve satış bedeli, siparişin tamamlandığı sırada sipariş formunda belirtilen bilgilerle birebir uyumludur.",
+    "section4Title": "4. Ürün Teslimatı ve Şartları",
+    "section4Content1": "4.1. Dijital ürünler ödeme işleminin tamamlanmasının ardından derhal Alıcı’ya elektronik ortamda teslim edilir.",
+    "section4Content2": "4.2. Teslimat, sipariş sırasında belirtilen e-posta adresine veya kullanıcı hesabına yapılır.",
+    "section4Content3": "4.3. Dijital ürünlerde fiziksel bir teslimat söz konusu olmadığından, kargo masrafı bulunmamaktadır.",
+    "section5Title": "5. Cayma Hakkı ve İade",
+    "section5Content1": "5.1. Dijital ürünler niteliği gereği, teslim edildikten sonra 6502 sayılı Kanun'un 15. maddesi uyarınca cayma hakkına tabi değildir.",
+    "section5Content2": "5.2. Ürünlerde teknik bir sorun olması durumunda Alıcı, Satıcı’ya başvurarak sorunun çözümünü talep edebilir.",
+    "section6Title": "6. Satıcı’nın Yükümlülükleri",
+    "section6Content1": "6.1. Satıcı, siparişin belirtilen şartlara uygun şekilde teslim edilmesinden sorumludur.",
+    "section6Content2": "6.2. Satıcı, teknik bir problem oluşması durumunda Alıcı’ya gerekli desteği sağlamayı taahhüt eder.",
+    "section7Title": "7. Uyuşmazlıkların Çözümü",
+    "section7Content": "Bu sözleşmeden doğabilecek uyuşmazlıklarda, taraflar öncelikli olarak uzlaşmayı hedefleyecek, çözüm bulunamaması halinde Alıcı’nın yerleşim yerindeki Tüketici Hakem Heyetleri ve Mahkemeleri yetkili olacaktır.",
+    "section8Title": "8. Yürürlük",
+    "section8Content": "İşbu sözleşme, Alıcı’nın siparişi tamamlaması ve ödeme işlemini gerçekleştirmesi ile birlikte elektronik ortamda yürürlüğe girer.",
+    "footer": "Taraflar\nSatıcı: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nAlıcı: [Alıcı Adı ve Soyadı veya Unvanı]\nTarih: [Tarih]\nElektronik Onay: [Alıcı’nın Onayı]"
+  }
+
 }

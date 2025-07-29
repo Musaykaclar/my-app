@@ -4,14 +4,9 @@ import { ensureAnonymousUser } from "@/utils/parse/ensureAnonymousUser";
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from 'next/navigation';
-import Parse from 'parse';
+import Parse from "@/utils/parse/Parse";
 
-// Parse initialize
-Parse.initialize(
-  process.env.NEXT_PUBLIC_PARSE_APP_ID || 'YOUR_APP_ID', 
-  process.env.NEXT_PUBLIC_PARSE_JS_KEY || 'YOUR_JS_KEY'
-);
-Parse.serverURL = process.env.NEXT_PUBLIC_PARSE_SERVER_URL || 'http://localhost:1337/parse';
+
 
 interface Field {
   label: string;

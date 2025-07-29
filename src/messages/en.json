@@ -117,7 +117,52 @@
 "Chatbot":{
 "chatbot-title":"Contract Assistant",
 "chatbot-message":"Enter your message..."
-}
+},
+  "About": {
+    "about-title": "About Us",
+    "about-description": "dewjrkdnclmsfkejndmc"
+  },
+  "ConfidentialityAgreement": {
+    "conf-agreement-title": "Confidentiality Agreement",
+    "conf-agreement-description": "derfgtyhujıkolıkj"
+  },
+  "Communication": {
+    "communication-title": "Contact",
+    "communication-description": "For any questions, suggestions, or support requests, feel free to contact us.",
+    "eposta": "Email:"
+  },
+  "DeliveryAndReturn": {
+    "dar-title": "Delivery and Return Terms",
+    "item1": "Purchased digital products are instantly available after payment confirmation.",
+    "item2": "Digital products are automatically delivered to your email address or user account.",
+    "item3": "There is no right of withdrawal for personalized digital products due to consumer rights.",
+    "item4": "Return requests will only be considered in case of technical issues during the service.",
+    "item5": "You can contact us 24/7 for technical support requests."
+  },
+  "DistanceContract": {
+    "title": "Distance Sales Contract",
+    "section1Title": "1. Parties",
+    "section1Content": "This contract is established electronically between De Marke Labs Teknoloji ve Yazılım Limited Şirketi (hereinafter referred to as \"Seller\") and [Customer Name or Company Title] (hereinafter referred to as \"Buyer\") under the conditions specified below.",
+    "section2Title": "2. Subject",
+    "section2Content": "This contract defines the rights and obligations of the parties in accordance with the Law No. 6502 on Consumer Protection and the Regulation on Distance Contracts regarding the sale and delivery of the products ordered electronically by the Buyer from the website dilekcearzuhal.com belonging to the Seller.",
+    "section3Title": "3. Product Information",
+    "section3Content": "The type, model, quantity, brand, color, and price of the product(s) are exactly as stated in the order form at the time of completion.",
+    "section4Title": "4. Product Delivery and Terms",
+    "section4Content1": "4.1. Digital products are delivered electronically to the Buyer immediately after payment.",
+    "section4Content2": "4.2. Delivery is made to the email address or user account specified at the time of order.",
+    "section4Content3": "4.3. Since there is no physical delivery for digital products, there are no shipping costs.",
+    "section5Title": "5. Right of Withdrawal and Returns",
+    "section5Content1": "5.1. Due to the nature of digital products, the right of withdrawal does not apply as per Article 15 of Law No. 6502.",
+    "section5Content2": "5.2. In case of a technical issue with the product, the Buyer may contact the Seller for resolution.",
+    "section6Title": "6. Seller’s Obligations",
+    "section6Content1": "6.1. The Seller is responsible for delivering the order as agreed.",
+    "section6Content2": "6.2. The Seller commits to provide necessary support in case of technical problems.",
+    "section7Title": "7. Dispute Resolution",
+    "section7Content": "In case of disputes arising from this contract, the parties will first attempt to reach an amicable resolution. If not possible, the Consumer Arbitration Committees and Courts at the Buyer’s location will be authorized.",
+    "section8Title": "8. Validity",
+    "section8Content": "This contract becomes valid electronically upon the Buyer completing the order and making payment.",
+    "footer": "Parties\nSeller: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nBuyer: [Buyer Name or Company Title]\nDate: [Date]\nElectronic Approval: [Buyer's Approval]"
+  }
     
 }
   

@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import Image from 'next/image';
+
 const Footer = () => {
     return (
-      <footer className="w-full bg-[#fb7185]  px-6">
+      <footer className="w-full bg-[#fb7185] px-6">
         <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex text-black gap-x-6">
             <Link
-              
               aria-label="De Marke Labs on LinkedIn"
               href="https://www.linkedin.com/company/de-marke-labs/"
               className="group"
@@ -21,11 +21,10 @@ const Footer = () => {
                 />
               </svg>
             </Link>
-  
           </div>
-  
-          <div className="flex flex-col items-center justify-start">
-            <div className="mt-5 flex items-center justify-between gap-5 sm:mt-0 sm:gap-x-20">
+
+          <div className="flex flex-col items-center justify-start mt-6 sm:mt-0">
+            <div className="flex items-center justify-between gap-5 sm:gap-x-20">
               <Image
                 alt="iyzico"
                 loading="lazy"
@@ -43,18 +42,36 @@ const Footer = () => {
                 style={{ color: "transparent" }}
               />
             </div>
-            <p className="mt-6 text-center text-sm text-black-500 sm:mt-0 sm:text-left">
+            <p className="mt-6 text-center text-sm text-black-500 sm:mt-0 sm:text-right">
               Copyright © 2025{" "}
               <Link href="http://demarkelabs.com" className="underline">
                 De Marke Labs
               </Link>
               , Inc. All rights reserved.
             </p>
+
+            {/* Yeni eklenen linkler */}
+            <div className="mt-4 flex flex-col items-center sm:items-end sm:flex-row sm:gap-x-6 text-black text-sm">
+              <Link href="/hakkimizda" className="underline hover:text-black/80">
+                Hakkımızda
+              </Link>
+              <Link href="/teslimat-ve-iade" className="underline hover:text-black/80">
+                Teslimat ve İade Şartları
+              </Link>
+              <Link href="/gizlilik-sozlesmesi" className="underline hover:text-black/80">
+                Gizlilik Sözleşmesi
+              </Link>
+              <Link href="/mesafeli-satis" className="underline hover:text-black/80">
+                Mesafeli Satış Sözleşmesi
+              </Link>
+              <Link href="/iletisim" className="underline hover:text-black/80">
+                İletişim
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
     );
   };
-  
-  export default Footer;
-  
+
+export default Footer;

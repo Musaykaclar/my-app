@@ -117,6 +117,54 @@
 "Chatbot": {
 "chatbot-title":"Assistente Contrattuale",
 "chatbot-message":"Inserisci il tuo messaggio..."
-}
+},
+
+  "About": {
+    "about-title": "Chi Siamo",
+    "about-description": "dewjrkdnclmsfkejndmc"
+  },
+  "ConfidentialityAgreement": {
+    "conf-agreement-title": "Accordo di Riservatezza",
+    "conf-agreement-description": "derfgtyhujıkolıkj"
+  },
+  "Communication": {
+    "communication-title": "Contatti",
+    "communication-description": "Per qualsiasi domanda, suggerimento o richiesta di supporto, non esitare a contattarci.",
+    "eposta": "Email:"
+  },
+  "DeliveryAndReturn": {
+    "dar-title": "Termini di Consegna e Reso",
+    "item1": "I prodotti digitali acquistati sono immediatamente disponibili dopo la conferma del pagamento.",
+    "item2": "I prodotti digitali vengono consegnati automaticamente al tuo indirizzo email o account utente.",
+    "item3": "Per i prodotti digitali personalizzati non è previsto il diritto di recesso, in base alla normativa sulla tutela del consumatore.",
+    "item4": "Le richieste di reso saranno valutate solo in caso di problemi tecnici durante il servizio.",
+    "item5": "Puoi contattarci 24/7 per richieste di supporto tecnico."
+  },
+  "DistanceContract": {
+    "title": "Contratto di Vendita a Distanza",
+    "section1Title": "1. Parti",
+    "section1Content": "Questo contratto è stipulato elettronicamente tra De Marke Labs Teknoloji ve Yazılım Limited Şirketi (di seguito denominato \"Venditore\") e [Nome o Ragione Sociale del Cliente] (di seguito denominato \"Acquirente\") secondo le condizioni specificate di seguito.",
+    "section2Title": "2. Oggetto",
+    "section2Content": "Il presente contratto definisce i diritti e gli obblighi delle parti in conformità con la Legge n. 6502 sulla Protezione dei Consumatori e il Regolamento sui Contratti a Distanza riguardante la vendita e la consegna dei prodotti ordinati elettronicamente dall’Acquirente dal sito dilekcearzuhal.com del Venditore.",
+    "section3Title": "3. Informazioni sul Prodotto",
+    "section3Content": "Il tipo, modello, quantità, marca, colore e prezzo del/i prodotto/i sono esattamente quelli indicati nel modulo d’ordine al momento del completamento.",
+    "section4Title": "4. Consegna del Prodotto e Condizioni",
+    "section4Content1": "4.1. I prodotti digitali vengono consegnati elettronicamente all’Acquirente immediatamente dopo il pagamento.",
+    "section4Content2": "4.2. La consegna avviene all’indirizzo email o account utente specificato al momento dell’ordine.",
+    "section4Content3": "4.3. Poiché non c’è una consegna fisica per i prodotti digitali, non ci sono costi di spedizione.",
+    "section5Title": "5. Diritto di Recesso e Resi",
+    "section5Content1": "5.1. Per la natura dei prodotti digitali, il diritto di recesso non si applica come da Articolo 15 della Legge n. 6502.",
+    "section5Content2": "5.2. In caso di problemi tecnici con il prodotto, l’Acquirente può contattare il Venditore per la risoluzione.",
+    "section6Title": "6. Obblighi del Venditore",
+    "section6Content1": "6.1. Il Venditore è responsabile della consegna dell’ordine come concordato.",
+    "section6Content2": "6.2. Il Venditore si impegna a fornire il supporto necessario in caso di problemi tecnici.",
+    "section7Title": "7. Risoluzione delle Controversie",
+    "section7Content": "In caso di controversie derivanti da questo contratto, le parti cercheranno prima una risoluzione amichevole. In caso contrario, i Comitati e i Tribunali Arbitrali dei Consumatori presso la residenza dell’Acquirente saranno competenti.",
+    "section8Title": "8. Validità",
+    "section8Content": "Questo contratto diventa valido elettronicamente al completamento dell’ordine e al pagamento da parte dell’Acquirente.",
+    "footer": "Parti\nVenditore: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nAcquirente: [Nome o Ragione Sociale dell’Acquirente]\nData: [Data]\nApprovazione Elettronica: [Approvazione dell’Acquirente]"
+  }
+
+
   
 }

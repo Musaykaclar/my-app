@@ -117,6 +117,53 @@
 "Chatbot":{
 "chatbot-title":"Assistant Contrat",
 "chatbot-message":"Saisissez votre message..."
-}
+},
+
+  "About": {
+    "about-title": "À Propos",
+    "about-description": "dewjrkdnclmsfkejndmc"
+  },
+  "ConfidentialityAgreement": {
+    "conf-agreement-title": "Accord de Confidentialité",
+    "conf-agreement-description": "derfgtyhujıkolıkj"
+  },
+  "Communication": {
+    "communication-title": "Contact",
+    "communication-description": "Pour toute question, suggestion ou demande de support, n'hésitez pas à nous contacter.",
+    "eposta": "Email :"
+  },
+  "DeliveryAndReturn": {
+    "dar-title": "Conditions de Livraison et de Retour",
+    "item1": "Les produits numériques achetés sont disponibles immédiatement après confirmation du paiement.",
+    "item2": "Les produits numériques sont automatiquement livrés à votre adresse e-mail ou compte utilisateur.",
+    "item3": "Il n'existe pas de droit de rétractation pour les produits numériques personnalisés conformément aux droits des consommateurs.",
+    "item4": "Les demandes de retour ne seront examinées qu'en cas de problème technique pendant le service.",
+    "item5": "Vous pouvez nous contacter 24h/24 et 7j/7 pour toute demande de support technique."
+  },
+  "DistanceContract": {
+    "title": "Contrat de Vente à Distance",
+    "section1Title": "1. Parties",
+    "section1Content": "Ce contrat est conclu électroniquement entre De Marke Labs Teknoloji ve Yazılım Limited Şirketi (ci-après dénommé \"Vendeur\") et [Nom ou Raison Sociale du Client] (ci-après dénommé \"Acheteur\") selon les conditions indiquées ci-dessous.",
+    "section2Title": "2. Objet",
+    "section2Content": "Ce contrat définit les droits et obligations des parties conformément à la Loi n° 6502 relative à la protection des consommateurs et au règlement sur les contrats à distance concernant la vente et la livraison des produits commandés électroniquement par l'Acheteur sur le site dilekcearzuhal.com appartenant au Vendeur.",
+    "section3Title": "3. Informations sur le Produit",
+    "section3Content": "Le type, le modèle, la quantité, la marque, la couleur et le prix du ou des produits sont exactement ceux indiqués dans le formulaire de commande au moment de la finalisation.",
+    "section4Title": "4. Livraison et Conditions du Produit",
+    "section4Content1": "4.1. Les produits numériques sont livrés électroniquement à l'Acheteur immédiatement après le paiement.",
+    "section4Content2": "4.2. La livraison est effectuée à l'adresse e-mail ou au compte utilisateur indiqué au moment de la commande.",
+    "section4Content3": "4.3. Étant donné qu'il n'y a pas de livraison physique pour les produits numériques, il n'y a pas de frais d'expédition.",
+    "section5Title": "5. Droit de Rétractation et Retours",
+    "section5Content1": "5.1. En raison de la nature des produits numériques, le droit de rétractation ne s'applique pas conformément à l'article 15 de la Loi n° 6502.",
+    "section5Content2": "5.2. En cas de problème technique avec le produit, l'Acheteur peut contacter le Vendeur pour résolution.",
+    "section6Title": "6. Obligations du Vendeur",
+    "section6Content1": "6.1. Le Vendeur est responsable de la livraison de la commande conformément aux conditions convenues.",
+    "section6Content2": "6.2. Le Vendeur s'engage à fournir l'assistance nécessaire en cas de problèmes techniques.",
+    "section7Title": "7. Résolution des Litiges",
+    "section7Content": "En cas de litiges découlant de ce contrat, les parties chercheront d'abord une résolution à l'amiable. À défaut, les Comités d'Arbitrage et Tribunaux des Consommateurs du lieu de résidence de l'Acheteur seront compétents.",
+    "section8Title": "8. Entrée en Vigueur",
+    "section8Content": "Ce contrat prend effet électroniquement dès que l'Acheteur complète la commande et effectue le paiement.",
+    "footer": "Parties\nVendeur : De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nAcheteur : [Nom ou Raison Sociale de l'Acheteur]\nDate : [Date]\nApprobation Électronique : [Approbation de l'Acheteur]"
+  }
+
   
 }
