@@ -49,16 +49,33 @@ export default function ContractDetailPage() {
     fetchContract();
   }, [slug]);
 
-  const downloadPDF = () => {
-    if (!contractText || !slug) return;
-
-    const blob = new Blob([contractText], { type: "application/pdf" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = `${slug}.pdf`;
-    link.click();
+  const downloadPDF = async () => {
+    if (!slug) return;
+  
+    try {
+      const res = await fetch("http://localhost:1337/parse/functions/generatePdfFromText", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Parse-Application-Id": process.env.NEXT_PUBLIC_PARSE_APP_ID!,
+          "X-Parse-Master-Key": process.env.NEXT_PUBLIC_PARSE_MASTER_KEY!,
+        },
+        body: JSON.stringify({ filename: `${slug}.txt` }),
+      });
+  
+      if (!res.ok) throw new Error("PDF oluşturulamadı");
+  
+      const data = await res.json();
+      const pdfUrl = data.result;
+  
+      // Yeni sekmede açmak için
+      window.open(pdfUrl, "_blank");
+    } catch (err) {
+      console.error("PDF indirme hatası:", err);
+      alert("PDF indirilemedi.");
+    }
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-5xl mx-auto">

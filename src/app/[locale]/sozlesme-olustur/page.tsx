@@ -1,12 +1,10 @@
 'use client';
 
-import { ensureAnonymousUser } from "@/utils/parse/ensureAnonymousUser";
+import { ensureAnonymousUser } from "@/utils/ensureAnonymousUser";
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from 'next/navigation';
 import Parse from "@/utils/parse/Parse";
-
-
 
 interface Field {
   label: string;
