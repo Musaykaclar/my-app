@@ -1,9 +1,10 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from "react";
-import { Send, RefreshCw, Download } from "lucide-react";
-import Parse from "parse";
+import { Send, RefreshCw, Edit, FileText } from "lucide-react";
+import Parse from "@/utils/parse/Parse";
 import { ensureAnonymousUser } from "@/utils/ensureAnonymousUser";
+import { useLocale } from 'next-intl';
 
 // Thread ID oluşturma fonksiyonu
 const generateThreadId = (): string => {
@@ -31,6 +32,7 @@ interface Message {
 
 export default function Chatbot() {
   const t = useTranslations("Chatbot");
+  const locale = useLocale();
 
   // States
   const [messages, setMessages] = useState<Message[]>([]);
@@ -38,7 +40,6 @@ export default function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const [threadId, setThreadId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
-  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState<'connected' | 'disconnected' | 'connecting'>('connecting');
   
   // Refs
@@ -176,68 +177,22 @@ export default function Chatbot() {
     }
   };
 
-  // PDF indirme işlevi
-  const handleDownloadPdf = async () => {
-    const lastBotMessage = messages
-      .filter((m) => m.type === "bot" && m.text && typeof m.text === 'string' && m.text.length > 100)
-      .pop()?.text;
-      
+  // Sözleşme editörünü aç
+  const handleOpenEditor = () => {
+    const lastBotMessage = messages.findLast(m => m.type === 'bot' && m.text.length > 100)?.text;
     if (!lastBotMessage) {
-      alert("PDF oluşturmak için önce bir sözleşme metni oluşturun.");
+      alert("Önce bir sözleşme oluşturun.");
       return;
     }
 
-    setIsGeneratingPdf(true);
-
-    try {
-      console.log("🔒 Güvenli PDF oluşturuluyor...");
-      
-      // Güvenli PDF oluştur
-      const pdfResponse = await Parse.Cloud.run("generateSecurePdf", {
-        content: lastBotMessage,
-        threadId: threadId
-      });
-
-      console.log("📄 PDF Response:", pdfResponse);
-
-      if (pdfResponse.success && pdfResponse.secureId) {
-        // Güvenli indirme URL'i al
-        const downloadResponse = await Parse.Cloud.run("downloadSecurePdf", {
-          secureId: pdfResponse.secureId,
-          threadId: threadId
-        });
-
-        if (downloadResponse.success && downloadResponse.downloadUrl) {
-          const link = document.createElement("a");
-          link.href = downloadResponse.downloadUrl;
-          link.download = downloadResponse.fileName || `sozlesme_${Date.now()}.pdf`;
-          link.target = "_blank";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          
-          console.log("✅ PDF başarıyla indirildi");
-        } else {
-          throw new Error("İndirme URL'i alınamadı");
-        }
-      } else {
-        throw new Error(pdfResponse.message || "PDF oluşturulamadı");
-      }
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("❌ PDF indirilemedi:", error);
-        alert(`PDF oluşturma sırasında bir hata oluştu: ${error.message}`);
-      } else {
-        console.error("❌ Bilinmeyen hata:", error);
-        alert("Bilinmeyen bir hata oluştu.");
-      }
-    } finally {
-      setIsGeneratingPdf(false);
-    }
+    // Editör sayfasına yönlendir ve sözleşme içeriğini URL parametresi olarak gönder
+    const encodedContent = encodeURIComponent(lastBotMessage);
+    const editorUrl = `/${locale}/sozlesme-editor?content=${encodedContent}&threadId=${threadId}`;
+    window.open(editorUrl, "_blank");
   };
 
-  // PDF butonunu göster koşulu
-  const shouldShowPdfButton = messages.some((m) => 
+  // Editör butonunu göster koşulu
+  const shouldShowEditorButton = messages.some((m) => 
     m.type === "bot" && 
     m.text && 
     typeof m.text === 'string' && 
@@ -341,25 +296,15 @@ export default function Chatbot() {
         <div ref={bottomRef} />
       </div>
 
-      {/* PDF Button */}
-      {shouldShowPdfButton && (
+      {/* Editor Button */}
+      {shouldShowEditorButton && (
         <div className="text-center p-3 border-t bg-white">
           <button
-            onClick={handleDownloadPdf}
-            disabled={isGeneratingPdf}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2 mx-auto disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleOpenEditor}
+            className="bg-[#fb7185] text-white px-4 py-2 rounded hover:bg-[#fb7185]-700 transition flex items-center gap-2 mx-auto"
           >
-            {isGeneratingPdf ? (
-              <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                PDF Oluşturuluyor...
-              </>
-            ) : (
-              <>
-                <Download className="w-4 h-4" />
-                PDF Olarak İndir
-              </>
-            )}
+            <Edit className="w-4 h-4" />
+            Sözleşmeyi Görüntüle
           </button>
         </div>
       )}
