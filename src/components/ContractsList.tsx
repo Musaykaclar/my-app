@@ -1,32 +1,36 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Parse from '@/utils/parse/Parse';
 import { useLocale } from 'next-intl';
+import { loadDejaVuSansFont } from '@/utils/fonts';
 
 type Contract = {
   id: string;
   threadId: string;
-  editedAt: Date;
+  editedAt: string;
   version: number;
   originalContent: string;
   editedContent: string;
 };
 
+type ModalType = 'preview' | 'deleteConfirm' | 'message' | null;
+
 export default function ContractsList() {
   const [contracts, setContracts] = useState<Contract[]>([]);
-  const [selectedThread, setSelectedThread] = useState<string | null>(null);
-  const [versions, setVersions] = useState<Contract[]>([]);
-  const [loading, setLoading] = useState({
-    contracts: true,
-    versions: false
-  });
+  const [loading, setLoading] = useState({ contracts: true });
+
+  // Modal state
   const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState<ModalType>(null);
   const [modalContent, setModalContent] = useState('');
+  const [deleteContractId, setDeleteContractId] = useState<string | null>(null);
+  
+
   const router = useRouter();
   const locale = useLocale();
 
-  // Kullanıcının sözleşmelerini getir
   useEffect(() => {
     const fetchContracts = async () => {
       try {
@@ -34,7 +38,14 @@ export default function ContractsList() {
         if (!user) return router.push(`/${locale}/login`);
 
         const results = await Parse.Cloud.run('getUserContracts');
-        setContracts(results);
+        const jsonResults = results.map((obj: any) => {
+          const data = obj.toJSON();
+          return {
+            ...data,
+            id: data.objectId,
+          };
+        });
+        setContracts(jsonResults);
       } catch (error) {
         console.error("Sözleşmeler yüklenemedi:", error);
       } finally {
@@ -44,99 +55,182 @@ export default function ContractsList() {
     fetchContracts();
   }, [locale, router]);
 
-  // Versiyonları getir
-  const fetchVersions = async (threadId: string) => {
-    setLoading(prev => ({ ...prev, versions: true }));
-    try {
-      const results = await Parse.Cloud.run('getContractVersions', { threadId });
-      setVersions(results);
-      setSelectedThread(threadId);
-    } catch (error) {
-      console.error("Versiyonlar yüklenemedi:", error);
-    } finally {
-      setLoading(prev => ({ ...prev, versions: false }));
-    }
-  };
-
-  // Görüntüle butonu tıklaması
+  // Görüntüleme modalı aç
   const handleView = (contract: Contract) => {
-    const contentToShow = contract.editedContent ?? contract.originalContent ?? '';
+    const contentToShow =
+      contract.editedContent?.trim() ||
+      contract.originalContent?.trim() ||
+      "İçerik bulunamadı.";
+
     setModalContent(contentToShow);
+    setModalType('preview');
     setShowModal(true);
   };
 
+  // PDF İndir
+  const handleDownload = async (contract: Contract) => {
+    try {
+      const content = contract.editedContent?.trim() || contract.originalContent?.trim() || "İçerik bulunamadı.";
+
+      const { jsPDF } = await import('jspdf');
+      const fontBase64 = await loadDejaVuSansFont();
+
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+      });
+
+      pdf.addFileToVFS('DejaVuSans.ttf', fontBase64.split(',')[1]);
+      pdf.addFont('DejaVuSans.ttf', 'DejaVuSans', 'normal');
+      pdf.setFont('DejaVuSans');
+
+      const margin = 20;
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const textWidth = pageWidth - 2 * margin;
+
+      pdf.setFontSize(16);
+      pdf.text('Sözleşme', margin, margin);
+
+      const dateStr = contract.editedAt && !isNaN(new Date(contract.editedAt).getTime())
+        ? new Date(contract.editedAt).toLocaleDateString('tr-TR')
+        : new Date().toLocaleDateString('tr-TR');
+
+      pdf.setFontSize(10);
+      pdf.text(`Tarih: ${dateStr}`, margin, margin + 10);
+      pdf.text(`Versiyon: ${contract.version}`, margin, margin + 16);
+
+      pdf.setFontSize(12);
+      const lines = pdf.splitTextToSize(content, textWidth);
+      let yPos = margin + 30;
+      const lineHeight = 8;
+
+      for (const line of lines) {
+        if (yPos > pageHeight - margin) {
+          pdf.addPage();
+          yPos = margin;
+        }
+        pdf.text(line, margin, yPos);
+        yPos += lineHeight;
+      }
+
+      const fileName = `sözleşme_v${contract.version}_${dateStr.replace(/\./g, '-')}.pdf`;
+      pdf.save(fileName);
+
+    } catch (error) {
+      console.error('PDF oluşturulamadı:', error);
+      // Fallback: txt olarak indir
+      const fallbackContent = contract.editedContent?.trim() || contract.originalContent?.trim() || "İçerik bulunamadı.";
+      const blob = new Blob([fallbackContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sözleşme_v${contract.version}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  };
+
+  // Silme modalını aç
+  const confirmDelete = (contractId: string) => {
+    setDeleteContractId(contractId);
+    setModalType('deleteConfirm');
+    setModalContent("Bu sözleşmeyi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.");
+    setShowModal(true);
+  };
+
+  // Silme işlemi
+  const handleDelete = async () => {
+    if (!deleteContractId) return;
+
+    try {
+      await Parse.Cloud.run("deleteEditedContract", { id: deleteContractId });
+      setContracts(prev => prev.filter(c => c.id !== deleteContractId));
+      setModalType('message');
+      setModalContent("Sözleşme başarıyla silindi.");
+      setDeleteContractId(null);
+    } catch (error) {
+  if (error instanceof Error) {
+    console.error("Sözleşme silme hatası:", error);
+    setModalType('message');
+    setModalContent("Sözleşme silinirken bir hata oluştu: " + error.message);
+  } else {
+    console.error("Sözleşme silme hatası:", error);
+    setModalType('message');
+    setModalContent("Sözleşme silinirken bilinmeyen bir hata oluştu.");
+  }
+}
+};
+
+  // Modal kapat
+  const closeModal = () => {
+    setShowModal(false);
+    setModalType(null);
+    setModalContent('');
+    setDeleteContractId(null);
+  };
+
   return (
-    <div className="p-4 space-y-6">
-      {/* Sözleşme Listesi */}
+    <div className="max-w-6xl mx-auto p-6">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-gray-800 text-center">SÖZLEŞMELERİNİZ</h1>
+      </div>
+
       {loading.contracts ? (
-        <div className="text-center py-8">Yükleniyor...</div>
+        <div className="text-center py-8">
+          <div className="inline-block w-8 h-8 border-2 border-[#fb7185] border-t-transparent rounded-full animate-spin"></div>
+          <p className="mt-2 text-gray-600">Yükleniyor...</p>
+        </div>
       ) : contracts.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          Henüz sözleşmeniz bulunmamaktadır
+        <div className="text-center py-12 text-gray-500">
+          <p>Henüz sözleşmeniz bulunmamaktadır</p>
         </div>
       ) : (
-        <div className="grid gap-4">
-          {contracts.map(contract => (
-            <div 
-              key={contract.id}
-              className="border p-4 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow"
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          {contracts.map((contract, index) => (
+            <div
+              key={contract.id ?? `${contract.threadId}_${index}`}
+              className={`flex items-center justify-between p-4 ${
+                index !== contracts.length - 1 ? 'border-b border-gray-100' : ''
+              } hover:bg-gray-50 transition-colors`}
             >
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="font-medium truncate max-w-md">
-                    {(contract.editedContent ?? contract.originalContent ?? '').substring(0, 60)}...
-                  </h3>
-                  <div className="flex gap-2 text-xs text-gray-500 mt-1">
-                    <span>v{contract.version}</span>
-                    <span>•</span>
-                    <span>
-                      {new Date(contract.editedAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleView(contract)}
-                    className="px-3 py-1 bg-gray-100 rounded text-sm"
-                  >
-                    Görüntüle
-                  </button>
-                  <button
-                    onClick={() => router.push(`/${locale}/chat-sozlesme?threadId=${contract.threadId}`)}
-                    className="px-3 py-1 bg-blue-600 text-white rounded text-sm"
-                  >
-                    Düzenle
-                  </button>
-                </div>
+              <div className="flex-1">
+                <h3 className="font-medium text-gray-800 mb-1">
+                  {(contract.editedContent ?? contract.originalContent ?? 'Başlıksız Sözleşme')
+                    .split('\n')[0]
+                    .substring(0, 60)}
+                  {(contract.editedContent ?? contract.originalContent ?? '').length > 60 && '...'}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {contract.editedAt && !isNaN(new Date(contract.editedAt).getTime())
+                    ? new Date(contract.editedAt).toLocaleDateString('tr-TR')
+                    : 'Tarih bilgisi yok'}
+                </p>
               </div>
 
-              {/* Versiyonlar */}
-              {selectedThread === contract.threadId && (
-                <div className="mt-4 border-t pt-4">
-                  <h4 className="font-medium text-sm mb-2">Düzenleme Geçmişi:</h4>
-                  {loading.versions ? (
-                    <div className="text-center py-2">Yükleniyor...</div>
-                  ) : versions.length > 0 ? (
-                    <div className="space-y-3">
-                      {versions.map(version => (
-                        <div key={version.id} className="text-sm p-2 bg-gray-50 rounded">
-                          <div className="flex justify-between">
-                            <span className="font-medium">v{version.version}</span>
-                            <span className="text-gray-500 text-xs">
-                              {new Date(version.editedAt).toLocaleString()}
-                            </span>
-                          </div>
-                          <p className="mt-1 line-clamp-2 text-gray-600">
-                            {version.editedContent.substring(0, 100)}...
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-sm text-gray-500">Geçmiş bulunamadı</p>
-                  )}
-                </div>
-              )}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleView(contract)}
+                  className="px-4 py-2 bg-[#fb7185] hover:bg-rose-500 text-white text-sm rounded transition-colors"
+                >
+                  Görüntüle
+                </button>
+                <button
+                  onClick={() => handleDownload(contract)}
+                  className="px-4 py-2 bg-[#fb7185] hover:bg-rose-500 text-white text-sm rounded transition-colors"
+                >
+                  İndir
+                </button>
+                <button
+                  onClick={() => confirmDelete(contract.id)}
+                  className="px-4 py-2 bg-[#fb7185] hover:bg-rose-500 text-white text-sm rounded transition-colors"
+                >
+                  Sil
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -144,16 +238,149 @@ export default function ContractsList() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white max-w-3xl max-h-[80vh] overflow-y-auto p-6 rounded shadow-lg relative">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 font-bold text-xl"
-            >
-              &times;
-            </button>
-            <h2 className="text-xl font-bold mb-4">Sözleşme Önizleme</h2>
-            <pre className="whitespace-pre-wrap text-gray-800">{modalContent}</pre>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+          <div className="bg-white max-w-4xl w-full max-h-[85vh] rounded-2xl shadow-2xl relative animate-in zoom-in-95 duration-300">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-[#fb7185] to-rose-400 rounded-t-2xl">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    {/* Icon değiştirilebilir modal tipine göre */}
+                    {modalType === 'preview' && (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    )}
+                    {modalType === 'deleteConfirm' && (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 9v2m0 4h.01M5.071 19h13.858a2 2 0 001.914-2.586l-3.429-9.429A2 2 0 0014.5 6H9.5a2 2 0 00-1.914 1.985l-3.429 9.429A2 2 0 005.071 19z"
+                      />
+                    )}
+                    {modalType === 'message' && (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"
+                      />
+                    )}
+                  </svg>
+                </div>
+                <h2 className="text-xl font-bold text-white">
+                  {modalType === 'preview' && 'Sözleşme Önizleme'}
+                  {modalType === 'deleteConfirm' && 'Silme Onayı'}
+                  {modalType === 'message' && 'Bilgi'}
+                </h2>
+              </div>
+              <button
+                onClick={closeModal}
+                className="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center text-white transition-colors duration-200"
+                aria-label="Kapat"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 overflow-y-auto max-h-[calc(85vh-80px)]">
+              {modalType === 'preview' && (
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                  <pre className="whitespace-pre-wrap text-gray-800 text-sm leading-relaxed font-mono">
+                    {modalContent}
+                  </pre>
+                </div>
+              )}
+
+              {(modalType === 'deleteConfirm' || modalType === 'message') && (
+                <p className="text-gray-800 text-base">{modalContent}</p>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50 rounded-b-2xl">
+              {modalType === 'preview' && (
+                <>
+                  <button
+                    onClick={closeModal}
+                    className="px-6 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors duration-200"
+                  >
+                    Kapat
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(modalContent);
+                    }}
+                    className="px-6 py-2.5 bg-gradient-to-r from-[#fb7185] to-rose-400 hover:from-[#f43f5e] hover:to-[#fb7185] text-white rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                      />
+                    </svg>
+                    Kopyala
+                  </button>
+                </>
+              )}
+
+              {modalType === 'deleteConfirm' && (
+                <>
+                  <button
+                    onClick={closeModal}
+                    className="px-6 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors duration-200"
+                  >
+                    İptal
+                  </button>
+                  <button
+                    onClick={() => {
+                      handleDelete();
+                    }}
+                    className="px-6 py-2.5 bg-[#fb7185] hover:bg-rose-500 text-white rounded-lg font-medium transition-colors duration-200"
+                  >
+                    Sil
+                  </button>
+                </>
+              )}
+
+              {modalType === 'message' && (
+                <button
+                  onClick={closeModal}
+                  className="px-6 py-2.5 bg-[#fb7185] hover:bg-rose-500 text-white rounded-lg font-medium transition-colors duration-200"
+                >
+                  Tamam
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}

@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from "react";
-import { Send, RefreshCw, Edit, FileText } from "lucide-react";
+import { Send, RefreshCw, Edit  } from "lucide-react";
 import Parse from "@/utils/parse/Parse";
 import { ensureAnonymousUser } from "@/utils/ensureAnonymousUser";
 import { useLocale } from 'next-intl';
