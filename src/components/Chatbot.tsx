@@ -60,7 +60,7 @@ export default function Chatbot() {
         await loadChatHistory(currentThreadId);
         setConnectionStatus('connected');
       } catch (error) {
-        console.error('❌ Chat başlatma hatası:', error);
+        console.error(t('error.startup'), error);
         setConnectionStatus('disconnected');
       } finally {
         setIsLoading(false);
@@ -85,7 +85,7 @@ export default function Chatbot() {
   // Chat geçmişini yükle
   const loadChatHistory = async (threadId: string) => {
     try {
-      console.log("📂 Chat geçmişi yükleniyor:", threadId);
+      console.log(t('log.loadingHistory'), threadId);
       
       const history = await Parse.Cloud.run("loadChatHistory", {
         threadId: threadId
@@ -97,10 +97,10 @@ export default function Chatbot() {
           timestamp: new Date()
         }));
         setMessages(formattedHistory);
-        console.log("✅ Chat geçmişi yüklendi:", history.length, "mesaj");
+        console.log(t('log.historyLoaded'), history.length);
       }
     } catch (error) {
-      console.error('❌ Chat geçmişi yüklenemedi:', error);
+      console.error(t('error.loadingHistory'), error);
       setMessages([]);
     }
   };
@@ -118,9 +118,9 @@ export default function Chatbot() {
         inputRef.current.focus();
       }
       
-      console.log("🆕 Yeni chat başlatıldı:", newThreadId);
+      console.log(t('log.newChatStarted'), newThreadId);
     } catch (error) {
-      console.error('❌ Yeni chat başlatma hatası:', error);
+      console.error(t('error.newChat'), error);
     }
   };
 
@@ -139,8 +139,8 @@ export default function Chatbot() {
     setIsTyping(true);
 
     try {
-      console.log("📤 Mesaj gönderiliyor:", userMessage.text);
-      console.log("🔗 Thread ID:", threadId);
+      console.log(t('log.sendingMessage'), userMessage.text);
+      console.log(t('log.threadId'), threadId);
 
       const reply = await Parse.Cloud.run("chatWithOpenAI", {
         message: userMessage.text,
@@ -149,18 +149,18 @@ export default function Chatbot() {
 
       const botMessage: Message = { 
         type: "bot", 
-        text: typeof reply === 'string' ? reply : 'Yanıt alınamadı.',
+        text: typeof reply === 'string' ? reply : t('error.noResponse'),
         timestamp: new Date()
       };
       
       setMessages((prev) => [...prev, botMessage]);
-      console.log("✅ Bot yanıtı alındı");
+      console.log(t('log.botResponseReceived'));
       
     } catch (error) {
-      console.error('❌ Chat hatası:', error);
+      console.error(t('error.chat'), error);
       const errorMessage: Message = {
         type: "bot",
-        text: "Bir hata oluştu. Lütfen tekrar deneyin.",
+        text: t('error.generic'),
         timestamp: new Date()
       };
       setMessages((prev) => [...prev, errorMessage]);
@@ -181,7 +181,7 @@ export default function Chatbot() {
   const handleOpenEditor = () => {
     const lastBotMessage = messages.findLast(m => m.type === 'bot' && m.text.length > 100)?.text;
     if (!lastBotMessage) {
-      alert("Önce bir sözleşme oluşturun.");
+      alert(t('alert.createContractFirst'));
       return;
     }
 
@@ -196,7 +196,7 @@ export default function Chatbot() {
     m.type === "bot" && 
     m.text && 
     typeof m.text === 'string' && 
-    (m.text.includes("SÖZLEŞMESİ") || m.text.includes("MADDE") || m.text.length > 500)
+    (m.text.includes(t('contractKeyWords.contract')) || m.text.includes(t('contractKeyWords.article')) || m.text.length > 500)
   );
 
   // Connection status indicator color
@@ -215,7 +215,7 @@ export default function Chatbot() {
       <div className="w-full max-w-md mx-auto h-[600px] bg-white shadow-2xl rounded-2xl flex items-center justify-center border">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#fb7185] mx-auto mb-4"></div>
-          <div className="text-gray-500">Chatbot yükleniyor...</div>
+          <div className="text-gray-500">{t('loading.chatbotLoading')}</div>
         </div>
       </div>
     );
@@ -228,19 +228,19 @@ export default function Chatbot() {
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${getStatusColor()}`} title={connectionStatus}></div>
           <div className="text-xl font-semibold">
-            {t('chatbot-title')}
+            {t('chatbotTitle')}
           </div>
         </div>
         <div className="flex gap-2">
           <button
             onClick={startNewChat}
             className="text-xs bg-white/20 px-2 py-1 rounded hover:bg-white/30 transition flex items-center gap-1"
-            title="Yeni Sohbet Başlat"
+            title={t('button.newChatTitle')}
           >
             <RefreshCw className="w-3 h-3" />
-            Yeni
+            {t('button.newChat')}
           </button>
-          <div className="text-xs bg-white/20 px-2 py-1 rounded font-mono" title={`Thread ID: ${threadId}`}>
+          <div className="text-xs bg-white/20 px-2 py-1 rounded font-mono" title={`${t('tooltip.threadId')} ${threadId}`}>
             {threadId.slice(-8)}...
           </div>
         </div>
@@ -251,11 +251,11 @@ export default function Chatbot() {
         {messages.length === 0 && (
           <div className="text-center text-gray-500 mt-10">
             <div className="text-4xl mb-4">⚖️</div>
-            <p className="font-medium">Merhaba! Size nasıl yardımcı olabilirim?</p>
-            <p className="text-sm mt-2">Hukuki sözleşme hazırlama konusunda uzmanım.</p>
+            <p className="font-medium">{t('welcome.greeting')}</p>
+            <p className="text-sm mt-2">{t('welcome.description')}</p>
             <div className="mt-4 text-xs text-gray-400">
-              <p>Örnek: &quot;Kira sözleşmesi hazırla&quot;</p>
-              <p>Örnek: &quot;İş sözleşmesi oluştur&quot;</p>
+              <p>{t('welcome.example1')}</p>
+              <p>{t('welcome.example2')}</p>
             </div>
           </div>
         )}
@@ -267,14 +267,14 @@ export default function Chatbot() {
                 ? "bg-[#fb7185] text-white"
                 : "bg-gray-200 text-gray-800"
             }`}>
-              <div className="whitespace-pre-wrap">{msg.text || "Mesaj yüklenemedi"}</div>
+              <div className="whitespace-pre-wrap">{msg.text || t('messageLoadError')}</div>
               
               {/* Timestamp */}
               {msg.timestamp && (
                 <div className={`text-xs mt-1 opacity-70 ${
                   msg.type === "user" ? "text-white/80" : "text-gray-500"
                 }`}>
-                  {msg.timestamp.toLocaleTimeString('tr-TR', { 
+                  {msg.timestamp.toLocaleTimeString(locale, { 
                     hour: '2-digit', 
                     minute: '2-digit' 
                   })}
@@ -288,7 +288,7 @@ export default function Chatbot() {
           <div className="flex justify-start">
             <div className="px-4 py-2 rounded-xl max-w-[75%] text-sm bg-gray-200 text-gray-800 flex items-center gap-2">
               <TypingDots />
-              <span className="text-xs text-gray-500">AI düşünüyor...</span>
+              <span className="text-xs text-gray-500">{t('typing.aiThinking')}</span>
             </div>
           </div>
         )}
@@ -301,10 +301,10 @@ export default function Chatbot() {
         <div className="text-center p-3 border-t bg-white">
           <button
             onClick={handleOpenEditor}
-            className="bg-[#fb7185] text-white px-4 py-2 rounded hover:bg-[#fb7185]-700 transition flex items-center gap-2 mx-auto"
+            className="bg-[#fb7185] text-white px-4 py-2 rounded hover:bg-[#f43f5e] transition flex items-center gap-2 mx-auto"
           >
             <Edit className="w-4 h-4" />
-            Sözleşmeyi Görüntüle
+            {t('button.viewContract')}
           </button>
         </div>
       )}
@@ -314,7 +314,7 @@ export default function Chatbot() {
         <input
           ref={inputRef}
           type="text"
-          placeholder={threadId ? t('chatbot-message') : "Bağlantı kuruluyor..."}
+          placeholder={threadId ? t('placeholder.messageInput') : t('placeholder.connecting')}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -335,10 +335,7 @@ export default function Chatbot() {
         </button>
       </div>
 
-      {/* Footer Info */}
-      <div className="px-3 py-1 bg-gray-50 text-xs text-gray-500 text-center border-t">
-        {messages.length} mesaj • Thread: {threadId.slice(-8)}
-      </div>
+      
     </div>
   );
 }

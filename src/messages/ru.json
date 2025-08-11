@@ -114,9 +114,57 @@
     "back-button": "Назад"
   }
 },
-"Chatbot":{
-"chatbot-title":"Помощник по контрактам",
-"chatbot-message":"Введите ваше сообщение..."
+"Chatbot": {
+  "chatbotTitle": "Юридический чат-бот",
+  "chatbot-title": "Юридический чат-бот",
+  "button": {
+    "newChat": "Новый",
+    "newChatTitle": "Начать новый чат",
+    "viewContract": "Просмотреть контракт"
+  },
+  "tooltip": {
+    "threadId": "ID потока"
+  },
+  "placeholder": {
+    "messageInput": "Введите сообщение...",
+    "connecting": "Подключение..."
+  },
+  "welcome": {
+    "greeting": "Здравствуйте! Чем могу помочь?",
+    "description": "Специализируюсь на составлении юридических контрактов.",
+    "example1": "Пример: \"Подготовьте договор аренды\"",
+    "example2": "Пример: \"Создайте трудовой договор\""
+  },
+  "typing": {
+    "aiThinking": "ИИ думает..."
+  },
+  "alert": {
+    "createContractFirst": "Пожалуйста, сначала создайте контракт."
+  },
+  "error": {
+    "startup": "Ошибка запуска чата:",
+    "loadingHistory": "Не удалось загрузить историю чата:",
+    "newChat": "Ошибка при запуске нового чата:",
+    "chat": "Ошибка чата:",
+    "noResponse": "Ответ не получен.",
+    "generic": "Произошла ошибка. Пожалуйста, попробуйте снова."
+  },
+  "log": {
+    "loadingHistory": "Загрузка истории чата:",
+    "historyLoaded": "История чата загружена, количество сообщений:",
+    "newChatStarted": "Начат новый чат:",
+    "sendingMessage": "Отправка сообщения:",
+    "threadId": "ID потока:",
+    "botResponseReceived": "Ответ бота получен"
+  },
+  "contractKeyWords": {
+    "contract": "КОНТРАКТ",
+    "article": "СТАТЬЯ"
+  },
+  "messageLoadError": "Не удалось загрузить сообщение",
+  "loading": {
+    "chatbotLoading": "Загрузка чат-бота..."
+  }
 },
 "About": {
   "about-title": "О Нас",

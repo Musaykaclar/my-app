@@ -115,9 +115,57 @@
   }
 },
 "Chatbot": {
-"chatbot-title":"Assistente Contrattuale",
-"chatbot-message":"Inserisci il tuo messaggio..."
-},
+    "chatbotTitle": "Chatbot Legale",
+    "chatbot-title": "Chatbot Legale",
+    "button": {
+      "newChat": "Nuovo",
+      "newChatTitle": "Avvia nuova chat",
+      "viewContract": "Visualizza contratto"
+    },
+    "tooltip": {
+      "threadId": "ID thread"
+    },
+    "placeholder": {
+      "messageInput": "Scrivi il tuo messaggio...",
+      "connecting": "Connessione in corso..."
+    },
+    "welcome": {
+      "greeting": "Ciao! Come posso aiutarti?",
+      "description": "Specializzato nella redazione di contratti legali.",
+      "example1": "Esempio: \"Prepara un contratto di locazione\"",
+      "example2": "Esempio: \"Crea un contratto di lavoro\""
+    },
+    "typing": {
+      "aiThinking": "L'IA sta pensando..."
+    },
+    "alert": {
+      "createContractFirst": "Per favore, crea prima un contratto."
+    },
+    "error": {
+      "startup": "Errore di avvio chat:",
+      "loadingHistory": "Impossibile caricare la cronologia chat:",
+      "newChat": "Errore nell'avviare una nuova chat:",
+      "chat": "Errore chat:",
+      "noResponse": "Nessuna risposta ricevuta.",
+      "generic": "Si è verificato un errore. Per favore riprova."
+    },
+    "log": {
+      "loadingHistory": "Caricamento cronologia chat:",
+      "historyLoaded": "Cronologia chat caricata, numero messaggi:",
+      "newChatStarted": "Nuova chat avviata:",
+      "sendingMessage": "Invio messaggio:",
+      "threadId": "ID thread:",
+      "botResponseReceived": "Risposta del bot ricevuta"
+    },
+    "contractKeyWords": {
+      "contract": "CONTRATTO",
+      "article": "ARTICOLO"
+    },
+    "messageLoadError": "Impossibile caricare il messaggio",
+    "loading": {
+      "chatbotLoading": "Caricamento chatbot in corso..."
+    }
+  },
 
   "About": {
     "about-title": "Chi Siamo",

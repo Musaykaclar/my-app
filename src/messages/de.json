@@ -115,9 +115,57 @@
   }
 },
 
-"Chatbot":{
-  "chatbot-title":"Vertragsassistent",
-  "chatbot-message":"Geben Sie Ihre Nachricht ein..."
+"Chatbot": {
+    "chatbotTitle": "Rechts-Chatbot",
+    "chatbot-title": "Rechts-Chatbot",
+    "button": {
+      "newChat": "Neu",
+      "newChatTitle": "Neuen Chat starten",
+      "viewContract": "Vertrag anzeigen"
+    },
+    "tooltip": {
+      "threadId": "Thread-ID"
+    },
+    "placeholder": {
+      "messageInput": "Nachricht eingeben...",
+      "connecting": "Verbindung wird hergestellt..."
+    },
+    "welcome": {
+      "greeting": "Hallo! Wie kann ich Ihnen helfen?",
+      "description": "Ich bin spezialisiert auf die Erstellung juristischer Verträge.",
+      "example1": "Beispiel: „Mietvertrag erstellen“",
+      "example2": "Beispiel: „Arbeitsvertrag anlegen“"
+    },
+    "typing": {
+      "aiThinking": "KI denkt..."
+    },
+    "alert": {
+      "createContractFirst": "Bitte erstellen Sie zuerst einen Vertrag."
+    },
+    "error": {
+      "startup": "Chat-Startfehler:",
+      "loadingHistory": "Chat-Verlauf konnte nicht geladen werden:",
+      "newChat": "Fehler beim Starten eines neuen Chats:",
+      "chat": "Chat-Fehler:",
+      "noResponse": "Keine Antwort erhalten.",
+      "generic": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "log": {
+      "loadingHistory": "Chat-Verlauf wird geladen:",
+      "historyLoaded": "Chat-Verlauf geladen, Nachrichtenanzahl:",
+      "newChatStarted": "Neuer Chat gestartet:",
+      "sendingMessage": "Nachricht wird gesendet:",
+      "threadId": "Thread-ID:",
+      "botResponseReceived": "Bot-Antwort erhalten"
+    },
+    "contractKeyWords": {
+      "contract": "VERTRAG",
+      "article": "ABSCHNITT"
+    },
+    "messageLoadError": "Nachricht konnte nicht geladen werden",
+    "loading": {
+      "chatbotLoading": "Chatbot wird geladen..."
+    }
   },
   "About": {
     "about-title": "Über Uns",

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Parse from '@/utils/parse/Parse';
 import { useLocale } from 'next-intl';
-import { loadDejaVuSansFont } from '@/utils/fonts';
+import { createContractPdf } from '@/utils/pdf/createContractPdf';
 
 type Contract = {
   id: string;
@@ -13,6 +13,18 @@ type Contract = {
   version: number;
   originalContent: string;
   editedContent: string;
+};
+
+type ParseContract = {
+  toJSON: () => {
+    objectId: string;
+    threadId: string;
+    editedAt: string;
+    version: number;
+    originalContent: string;
+    editedContent: string;
+    [key: string]: unknown; // For any additional properties we might not know about
+  };
 };
 
 type ModalType = 'preview' | 'deleteConfirm' | 'message' | null;
@@ -27,7 +39,6 @@ export default function ContractsList() {
   const [modalContent, setModalContent] = useState('');
   const [deleteContractId, setDeleteContractId] = useState<string | null>(null);
   
-
   const router = useRouter();
   const locale = useLocale();
 
@@ -38,7 +49,7 @@ export default function ContractsList() {
         if (!user) return router.push(`/${locale}/login`);
 
         const results = await Parse.Cloud.run('getUserContracts');
-        const jsonResults = results.map((obj: any) => {
+        const jsonResults = results.map((obj: ParseContract) => {
           const data = obj.toJSON();
           return {
             ...data,
@@ -67,71 +78,10 @@ export default function ContractsList() {
     setShowModal(true);
   };
 
-  // PDF İndir
   const handleDownload = async (contract: Contract) => {
-    try {
-      const content = contract.editedContent?.trim() || contract.originalContent?.trim() || "İçerik bulunamadı.";
-
-      const { jsPDF } = await import('jspdf');
-      const fontBase64 = await loadDejaVuSansFont();
-
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
-      });
-
-      pdf.addFileToVFS('DejaVuSans.ttf', fontBase64.split(',')[1]);
-      pdf.addFont('DejaVuSans.ttf', 'DejaVuSans', 'normal');
-      pdf.setFont('DejaVuSans');
-
-      const margin = 20;
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const textWidth = pageWidth - 2 * margin;
-
-      pdf.setFontSize(16);
-      pdf.text('Sözleşme', margin, margin);
-
-      const dateStr = contract.editedAt && !isNaN(new Date(contract.editedAt).getTime())
-        ? new Date(contract.editedAt).toLocaleDateString('tr-TR')
-        : new Date().toLocaleDateString('tr-TR');
-
-      pdf.setFontSize(10);
-      pdf.text(`Tarih: ${dateStr}`, margin, margin + 10);
-      pdf.text(`Versiyon: ${contract.version}`, margin, margin + 16);
-
-      pdf.setFontSize(12);
-      const lines = pdf.splitTextToSize(content, textWidth);
-      let yPos = margin + 30;
-      const lineHeight = 8;
-
-      for (const line of lines) {
-        if (yPos > pageHeight - margin) {
-          pdf.addPage();
-          yPos = margin;
-        }
-        pdf.text(line, margin, yPos);
-        yPos += lineHeight;
-      }
-
-      const fileName = `sözleşme_v${contract.version}_${dateStr.replace(/\./g, '-')}.pdf`;
-      pdf.save(fileName);
-
-    } catch (error) {
-      console.error('PDF oluşturulamadı:', error);
-      // Fallback: txt olarak indir
-      const fallbackContent = contract.editedContent?.trim() || contract.originalContent?.trim() || "İçerik bulunamadı.";
-      const blob = new Blob([fallbackContent], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `sözleşme_v${contract.version}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
+    const content = contract.editedContent?.trim() || contract.originalContent?.trim() || 'İçerik bulunamadı.';
+    const fileName = `sozlesme_${contract.id}.pdf`;
+    await createContractPdf(content, fileName);
   };
 
   // Silme modalını aç
@@ -153,17 +103,17 @@ export default function ContractsList() {
       setModalContent("Sözleşme başarıyla silindi.");
       setDeleteContractId(null);
     } catch (error) {
-  if (error instanceof Error) {
-    console.error("Sözleşme silme hatası:", error);
-    setModalType('message');
-    setModalContent("Sözleşme silinirken bir hata oluştu: " + error.message);
-  } else {
-    console.error("Sözleşme silme hatası:", error);
-    setModalType('message');
-    setModalContent("Sözleşme silinirken bilinmeyen bir hata oluştu.");
-  }
-}
-};
+      if (error instanceof Error) {
+        console.error("Sözleşme silme hatası:", error);
+        setModalType('message');
+        setModalContent("Sözleşme silinirken bir hata oluştu: " + error.message);
+      } else {
+        console.error("Sözleşme silme hatası:", error);
+        setModalType('message');
+        setModalContent("Sözleşme silinirken bilinmeyen bir hata oluştu.");
+      }
+    }
+  };
 
   // Modal kapat
   const closeModal = () => {

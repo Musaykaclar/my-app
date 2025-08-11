@@ -114,10 +114,58 @@
     "back-button": "Atrás"
   }
 },
-"Chatbot":{
-"chatbot-title":"Asistente de contratación",
-"chatbot-message":"Ingresa tu mensaje..."
-},
+"Chatbot": {
+    "chatbotTitle": "Chatbot Legal",
+    "chatbot-title": "Chatbot Legal",
+    "button": {
+      "newChat": "Nuevo",
+      "newChatTitle": "Iniciar nuevo chat",
+      "viewContract": "Ver contrato"
+    },
+    "tooltip": {
+      "threadId": "ID del hilo"
+    },
+    "placeholder": {
+      "messageInput": "Escribe tu mensaje...",
+      "connecting": "Conectando..."
+    },
+    "welcome": {
+      "greeting": "¡Hola! ¿Cómo puedo ayudarte?",
+      "description": "Especialista en redacción de contratos legales.",
+      "example1": "Ejemplo: \"Prepara un contrato de alquiler\"",
+      "example2": "Ejemplo: \"Crea un contrato de trabajo\""
+    },
+    "typing": {
+      "aiThinking": "La IA está pensando..."
+    },
+    "alert": {
+      "createContractFirst": "Por favor, crea un contrato primero."
+    },
+    "error": {
+      "startup": "Error al iniciar el chat:",
+      "loadingHistory": "Error al cargar el historial del chat:",
+      "newChat": "Error al iniciar un nuevo chat:",
+      "chat": "Error de chat:",
+      "noResponse": "No se recibió respuesta.",
+      "generic": "Ocurrió un error. Por favor, inténtalo de nuevo."
+    },
+    "log": {
+      "loadingHistory": "Cargando historial del chat:",
+      "historyLoaded": "Historial del chat cargado, cantidad de mensajes:",
+      "newChatStarted": "Nuevo chat iniciado:",
+      "sendingMessage": "Enviando mensaje:",
+      "threadId": "ID del hilo:",
+      "botResponseReceived": "Respuesta del bot recibida"
+    },
+    "contractKeyWords": {
+      "contract": "CONTRATO",
+      "article": "ARTÍCULO"
+    },
+    "messageLoadError": "Error al cargar el mensaje",
+    "loading": {
+      "chatbotLoading": "Cargando chatbot..."
+    }
+  },
 
   "About": {
     "about-title": "Sobre Nosotros",

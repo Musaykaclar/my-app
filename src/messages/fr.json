@@ -114,10 +114,58 @@
     "back-button": "Retour"
   }
 },
-"Chatbot":{
-"chatbot-title":"Assistant Contrat",
-"chatbot-message":"Saisissez votre message..."
-},
+"Chatbot": {
+    "chatbotTitle": "Chatbot Juridique",
+    "chatbot-title": "Chatbot Juridique",
+    "button": {
+      "newChat": "Nouveau",
+      "newChatTitle": "Démarrer une nouvelle conversation",
+      "viewContract": "Voir le contrat"
+    },
+    "tooltip": {
+      "threadId": "ID de thread"
+    },
+    "placeholder": {
+      "messageInput": "Tapez votre message...",
+      "connecting": "Connexion..."
+    },
+    "welcome": {
+      "greeting": "Bonjour ! Comment puis-je vous aider ?",
+      "description": "Je suis spécialisé dans la rédaction de contrats juridiques.",
+      "example1": "Exemple : \"Préparer un contrat de location\"",
+      "example2": "Exemple : \"Créer un contrat de travail\""
+    },
+    "typing": {
+      "aiThinking": "L'IA réfléchit..."
+    },
+    "alert": {
+      "createContractFirst": "Veuillez d'abord créer un contrat."
+    },
+    "error": {
+      "startup": "Erreur de démarrage du chat :",
+      "loadingHistory": "Impossible de charger l'historique du chat :",
+      "newChat": "Erreur lors du démarrage d'une nouvelle conversation :",
+      "chat": "Erreur de chat :",
+      "noResponse": "Aucune réponse reçue.",
+      "generic": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "log": {
+      "loadingHistory": "Chargement de l'historique du chat :",
+      "historyLoaded": "Historique du chat chargé, nombre de messages :",
+      "newChatStarted": "Nouvelle conversation démarrée :",
+      "sendingMessage": "Envoi du message :",
+      "threadId": "ID de thread :",
+      "botResponseReceived": "Réponse du bot reçue"
+    },
+    "contractKeyWords": {
+      "contract": "CONTRAT",
+      "article": "ARTICLE"
+    },
+    "messageLoadError": "Échec du chargement du message",
+    "loading": {
+      "chatbotLoading": "Chargement du chatbot..."
+    }
+  },
 
   "About": {
     "about-title": "À Propos",

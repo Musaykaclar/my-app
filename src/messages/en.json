@@ -114,10 +114,58 @@
     "back-button": "Back"
   }
 },
-"Chatbot":{
-"chatbot-title":"Contract Assistant",
-"chatbot-message":"Enter your message..."
-},
+"Chatbot": {
+    "chatbotTitle": "Legal Chatbot",
+    "chatbot-title": "Legal Chatbot",
+    "button": {
+      "newChat": "New",
+      "newChatTitle": "Start New Chat",
+      "viewContract": "View Contract"
+    },
+    "tooltip": {
+      "threadId": "Thread ID"
+    },
+    "placeholder": {
+      "messageInput": "Type your message...",
+      "connecting": "Connecting..."
+    },
+    "welcome": {
+      "greeting": "Hello! How can I assist you?",
+      "description": "I specialize in legal contract drafting.",
+      "example1": "Example: \"Prepare a rental contract\"",
+      "example2": "Example: \"Create an employment contract\""
+    },
+    "typing": {
+      "aiThinking": "AI is thinking..."
+    },
+    "alert": {
+      "createContractFirst": "Please create a contract first."
+    },
+    "error": {
+      "startup": "Chat startup error:",
+      "loadingHistory": "Failed to load chat history:",
+      "newChat": "Error starting new chat:",
+      "chat": "Chat error:",
+      "noResponse": "No response received.",
+      "generic": "An error occurred. Please try again."
+    },
+    "log": {
+      "loadingHistory": "Loading chat history:",
+      "historyLoaded": "Chat history loaded, messages count:",
+      "newChatStarted": "New chat started:",
+      "sendingMessage": "Sending message:",
+      "threadId": "Thread ID:",
+      "botResponseReceived": "Bot response received"
+    },
+    "contractKeyWords": {
+      "contract": "CONTRACT",
+      "article": "ARTICLE"
+    },
+    "messageLoadError": "Failed to load message",
+    "loading": {
+      "chatbotLoading": "Loading chatbot..."
+    }
+  },
   "About": {
     "about-title": "About Us",
     "about-description": "dewjrkdnclmsfkejndmc"
@@ -163,6 +211,7 @@
     "section8Content": "This contract becomes valid electronically upon the Buyer completing the order and making payment.",
     "footer": "Parties\nSeller: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nBuyer: [Buyer Name or Company Title]\nDate: [Date]\nElectronic Approval: [Buyer's Approval]"
   }
+  
     
 }
   

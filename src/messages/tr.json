@@ -114,9 +114,57 @@
     "back-button": "Geri"
   }
 },
-"Chatbot":{
-  "chatbot-title":"Sözleşme Asistanı",
-  "chatbot-message":"Mesajınızı yazınız..."
+"Chatbot": {
+  "chatbotTitle": "Hukuki Chatbot",
+  "chatbot-title": "Hukuki Chatbot",
+  "button": {
+    "newChat": "Yeni",
+    "newChatTitle": "Yeni Sohbet Başlat",
+    "viewContract": "Sözleşmeyi Görüntüle"
+  },
+  "tooltip": {
+    "threadId": "Thread ID"
+  },
+  "placeholder": {
+    "messageInput": "Mesajınızı yazın...",
+    "connecting": "Bağlantı kuruluyor..."
+  },
+  "welcome": {
+    "greeting": "Merhaba! Size nasıl yardımcı olabilirim?",
+    "description": "Hukuki sözleşme hazırlama konusunda uzmanım.",
+    "example1": "Örnek: \"Kira sözleşmesi hazırla\"",
+    "example2": "Örnek: \"İş sözleşmesi oluştur\""
+  },
+  "typing": {
+    "aiThinking": "AI düşünüyor..."
+  },
+  "alert": {
+    "createContractFirst": "Önce bir sözleşme oluşturun."
+  },
+  "error": {
+    "startup": "Chat başlatma hatası:",
+    "loadingHistory": "Chat geçmişi yüklenemedi:",
+    "newChat": "Yeni chat başlatma hatası:",
+    "chat": "Chat hatası:",
+    "noResponse": "Yanıt alınamadı.",
+    "generic": "Bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "log": {
+    "loadingHistory": "Chat geçmişi yükleniyor:",
+    "historyLoaded": "Chat geçmişi yüklendi, mesaj sayısı:",
+    "newChatStarted": "Yeni chat başlatıldı:",
+    "sendingMessage": "Mesaj gönderiliyor:",
+    "threadId": "Thread ID:",
+    "botResponseReceived": "Bot yanıtı alındı"
+  },
+  "contractKeyWords": {
+    "contract": "SÖZLEŞMESİ",
+    "article": "MADDE"
+  },
+  "messageLoadError": "Mesaj yüklenemedi",
+  "loading": {
+    "chatbotLoading": "Chatbot yükleniyor..."
+  }
 },
 "About":{
   "about-title":"Hakkımızda",
