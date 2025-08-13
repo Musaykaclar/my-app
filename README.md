@@ -28,7 +28,12 @@ It is connected to a **Parse Server** backend to manage data and handle API requ
 
 ## 📂 Project Structure
 /components # Reusable UI components
+
 /pages # Application routes
+
 /styles # Global styles
+
 /utils # Helper functions and Parse config
+
 /public # Static assets (images, icons, etc.)
+
