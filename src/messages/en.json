@@ -17,7 +17,8 @@
     "create": "Create Contract",
     "myContracts": "My Contracts",
     "faq": "FAQ",
-    "popular": "Popular Contracts"
+    "popular": "Popular Contracts",
+    "language-choice":"Choose Language"
   },
   "PopularContracts": {
     "title": "Popular Contracts",

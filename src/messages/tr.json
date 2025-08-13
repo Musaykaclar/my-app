@@ -17,7 +17,8 @@
     "create": "Sözleşme Oluştur",
     "myContracts": "Sözleşmelerim",
     "faq": "SSS",
-    "popular": "Popüler Sözleşmeler"
+    "popular": "Popüler Sözleşmeler",
+    "language-choice":"Dil Seç"
   },
   "PopularContracts": {
     "title": "Popüler Sözleşmeler",
@@ -213,5 +214,6 @@
     "section8Content": "İşbu sözleşme, Alıcı’nın siparişi tamamlaması ve ödeme işlemini gerçekleştirmesi ile birlikte elektronik ortamda yürürlüğe girer.",
     "footer": "Taraflar\nSatıcı: De Marke Labs Teknoloji ve Yazılım Limited Şirketi\nAlıcı: [Alıcı Adı ve Soyadı veya Unvanı]\nTarih: [Tarih]\nElektronik Onay: [Alıcı’nın Onayı]"
   }
+  
 
 }

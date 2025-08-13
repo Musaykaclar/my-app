@@ -17,7 +17,8 @@
     "create": "Vertrag Erstellen",
     "myContracts": "Meine Verträge",
     "faq": "Häufig gestellte Fragen",
-    "popular": "Beliebte Verträge"
+    "popular": "Beliebte Verträge",
+    "language-choice":"Sprache wählen"
   },
   "PopularContracts": {
     "title": "Beliebte Verträge",

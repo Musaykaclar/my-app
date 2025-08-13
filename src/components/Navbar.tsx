@@ -81,7 +81,7 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-expanded={langOpen}
             >
-              🌐 Dil Seç
+              🌐 {t('language-choice')}
             </button>
 
             {langOpen && (

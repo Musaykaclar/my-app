@@ -17,7 +17,8 @@
     "create": "Crear Contrato",
     "myContracts": "Mis Contratos",
     "faq": "Preguntas Frecuentes",
-    "popular": "Contratos Populares"
+    "popular": "Contratos Populares",
+    "language-choice": "Seleccionar Idioma"
   },
   "PopularContracts": {
     "title": "Contratos Populares",
