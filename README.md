@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This project is a modern web-based contract creation platform built with Next.js and integrated with a Parse Server backend.  
+It allows users to easily generate various types of legal contracts through a chatbot-driven interface, supporting multiple languages for a global audience.  
 
-## Getting Started
+Users can preview, edit, sign, and download their contracts in PDF format directly in the browser.  
+The platform also supports sending contracts via email, ensuring a seamless end-to-end document workflow.  
 
-First, run the development server:
+With its responsive design, intuitive UI, and powerful backend integration, this application provides a professional and efficient way to handle legal documentation online.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📄 Contract Maker - Frontend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is a **Next.js** based frontend application.  
+It is connected to a **Parse Server** backend to manage data and handle API requests.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Features
+- 🌍 Multi-language support (with **next-intl**)
+- 💬 Chatbot-based contract generation
+- 📄 View, edit, sign, and download contracts as PDF
+- 📧 Send contracts via email
+- 🔐 User session management
 
-## Learn More
+## 🛠️ Technologies Used
+- [Next.js](https://nextjs.org/) – Modern React framework
+- [Tailwind CSS](https://tailwindcss.com/) – Fast and flexible styling
+- [Parse JavaScript SDK](https://github.com/parse-community/Parse-SDK-JS) – Backend connection
+- [Lucide React](https://lucide.dev/) – Icon set
+- [next-intl](https://next-intl-docs.vercel.app/) – Multi-language support
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Project Structure
+/components # Reusable UI components
+/pages # Application routes
+/styles # Global styles
+/utils # Helper functions and Parse config
+/public # Static assets (images, icons, etc.)
